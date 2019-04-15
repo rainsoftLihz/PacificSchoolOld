@@ -29,7 +29,7 @@
         success(result);
         [SVProgressHUD dismiss];
     } failure:^(NSString *msg) {
-        [SVProgressHUD showWithStatus:msg];
+        [SVProgressHUD showErrorWithStatus:msg];
     }];
 }
 
@@ -194,7 +194,8 @@
     [SVProgressHUD show];
     [LTNetWorkManager post:kGetHot params:nil success:^(NSDictionary *result) {
         NSLog(@"热门 == %@",result);
-        if ([result[@"ret"] isEqualToString:@"0"]) {
+        
+        if ([[NSString stringWithFormat:@"%@",result[@"ret"]] isEqualToString:@"0"]) {
             NSArray *list = result[@"data"][@"list"];
             NSArray *models = [XTCourseModel mj_objectArrayWithKeyValuesArray:list];
             success(models);
@@ -243,6 +244,7 @@
 }
 
 + (void)getCourseDetailSuccess:(NSDictionary *)param success:(void (^)(XTCourseDetailModel *result))success {
+    NSLog(@"parmas======%@",param);
     [SVProgressHUD show];
     [LTNetWorkManager post:kGetCourseDetail params:param success:^(NSDictionary *result) {
         NSLog(@"课程详情%@",result);
@@ -354,9 +356,10 @@
         if ([result[@"ret"] isEqualToString:@"0"]) {
             success(result);
         }else {
-            [SVProgressHUD showWithStatus:@"退出错误"];
+            //[SVProgressHUD showErrorWithStatus:@"退出错误"];
+            success(result);
         }
-        [SVProgressHUD dismiss];
+
         
     } failure:^(NSString *msg) {
         [SVProgressHUD showErrorWithStatus:msg];

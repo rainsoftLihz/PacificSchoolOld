@@ -11,12 +11,8 @@
 #import "XTOrganizationTableViewCell.h"
 #import "XTMainViewModel.h"
 
-@interface XTRankViewController ()
-<
-    UITableViewDelegate,
-    UITableViewDataSource
->
-@property (nonatomic,strong)NSArray *models;
+@interface XTRankViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic,strong)NSMutableArray *modelArr;
 @end
 
 @implementation XTRankViewController
@@ -28,11 +24,12 @@
     [self initUI];
 }
 
+
 - (void)initData {
-    self.models = [NSArray array];
+    
     WeakSelf
     [XTMainViewModel getRankSuccess:^(NSArray * _Nonnull result) {
-        weakSelf.models = result;
+        weakSelf.modelArr = result;
         [weakSelf.tableView reloadData];
     }];
 }
@@ -59,14 +56,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.models.count;
+    return self.modelArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         XTRankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         cell.indexLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+1];
-        [cell loadModel:self.models[indexPath.row]];
+        [cell loadModel:self.modelArr[indexPath.row]];
         return cell;
     }else {
         XTOrganizationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];

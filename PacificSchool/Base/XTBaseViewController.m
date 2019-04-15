@@ -55,6 +55,7 @@
 - (void)showStatusInfo:(NSString *)info {
     [self afterHide];
     [SVProgressHUD showInfoWithStatus:info];
+    [SVProgressHUD dismissWithDelay:2.0];
     
 }
 

@@ -8,7 +8,7 @@
 
 #import "XTBaseNavViewController.h"
 
-@interface XTBaseNavViewController ()
+@interface XTBaseNavViewController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -18,6 +18,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.backgroundColor = kMainColor;
+    
+    self.interactivePopGestureRecognizer.enabled = YES;
+    //  self.interactivePopGestureRecognizer.delegate = self;
+    __weak typeof(self) weakself = self;
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.interactivePopGestureRecognizer.delegate = (id)weakself;
+    }
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
@@ -54,13 +61,29 @@
 - (UIBarButtonItem *)setBackButtonItem {
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 0, 20, 20);
-    button.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
-    [button setImage:[UIImage imageNamed:@"return"] forState:0];
+    button.frame = CGRectMake(0, 44/2.0-20/2.0, 32.0/3.0, 60.0/3.0);
+ 
+    [button setBackgroundImage:[UIImage imageNamed:@"backNav"] forState:0];
     [button addTarget:self action:@selector(backViewController) forControlEvents:UIControlEventTouchUpInside];
     
-    UIBarButtonItem* someBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    UIButton* clearBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    clearBtn.frame = CGRectMake(0, 0, 44, 44);
+    [clearBtn addSubview:button];
+    [clearBtn addTarget:self action:@selector(backViewController) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* someBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearBtn];
     return someBarButtonItem;
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer == self.interactivePopGestureRecognizer) {
+        // 屏蔽调用rootViewController的滑动返回手势
+        if (self.viewControllers.count < 2 || self.visibleViewController == [self.viewControllers objectAtIndex:0]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 - (void)backViewController {

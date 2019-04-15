@@ -301,6 +301,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         });
     }
 #endif
+    [self dismissWithDelay:2.0];
 }
 
 + (void)showErrorWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType {

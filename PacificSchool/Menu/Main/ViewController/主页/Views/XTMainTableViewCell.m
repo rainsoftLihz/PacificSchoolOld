@@ -52,7 +52,7 @@
     // self.collectionView.scrollEnabled = NO;
     self.collectionView.backgroundColor = [UIColor whiteColor];
     [self.collectionView registerNib:[UINib nibWithNibName:@"XTMyCourseCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"cell"];
-    
+    self.collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.collectionView];
 }
 

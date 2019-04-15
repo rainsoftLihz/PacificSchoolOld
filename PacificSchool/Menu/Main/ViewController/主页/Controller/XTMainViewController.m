@@ -241,7 +241,7 @@
 }
 
 - (void)selelctedCourseWithElnTableViewCell:(XTElnTableViewCell *)cell model:(XTCourseModel *)model {
-    XTCourseDetailViewController *vc = [XTCourseDetailViewController new];
+    XTCourseDetailViewController *vc = [[XTCourseDetailViewController alloc] init];
     vc.mapId = model.courseId;
     [self.navigationController pushViewController:vc animated:YES];
 }

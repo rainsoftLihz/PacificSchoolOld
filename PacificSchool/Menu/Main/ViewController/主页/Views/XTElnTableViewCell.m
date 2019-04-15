@@ -49,10 +49,10 @@ UICollectionViewDelegateFlowLayout
     self.collectionView.collectionViewLayout = layout;
     self.collectionView.dataSource  = self;
     self.collectionView.delegate = self;
-    // self.collectionView.scrollEnabled = NO;
     self.collectionView.backgroundColor = [UIColor whiteColor];
     [self.collectionView registerNib:[UINib nibWithNibName:@"XTMainCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"cell"];
     [self addSubview:self.collectionView];
+    self.collectionView.showsHorizontalScrollIndicator = NO;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

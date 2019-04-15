@@ -19,4 +19,5 @@
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
 #import "XTBaseViewController.h"
+#import "NSNumber+ToString.h"
 #endif /* Header_h */

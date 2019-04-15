@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self initData];
     
 }
@@ -44,7 +44,7 @@
 - (void)initData {
     
     NSDictionary *param = @{@"mapId":self.mapId};
-     WeakSelf
+    __weak typeof(self) weakSelf = self;
     [XTMainViewModel getCourseDetailSuccess:param success:^(XTCourseDetailModel * _Nonnull result) {
         weakSelf.model = result;
         [weakSelf initUI];

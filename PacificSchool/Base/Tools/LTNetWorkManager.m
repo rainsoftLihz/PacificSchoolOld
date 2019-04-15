@@ -40,7 +40,7 @@
     // 1.创建请求管理者
     AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
     manger.responseSerializer = [AFJSONResponseSerializer serializer];
-    manger.requestSerializer.timeoutInterval = 60.f;
+    manger.requestSerializer.timeoutInterval = 30.f;
     manger.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/json",@"application/json",@"text/javascript",@"text/html",@"text/xml", nil];
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;

@@ -31,7 +31,10 @@
 }
 
 - (void)initData {
-    
+    NSString* userName = DEF_PERSISTENT_GET_OBJECT(kUserName);
+    if (userName && userName.length > 0) {
+        self.accountTF.text = userName;
+    }
 }
 
 - (void)initUI {

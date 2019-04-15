@@ -45,17 +45,19 @@
     
     NSString *signTotalCount = dic[@"signTotalCount"];
     NSString *totalCoin = dic[@"totalCoin"];
-    NSString *hasStudyTime = dic[@"hasStudyTime"];
+    NSString *hasStudyTime = dic[@"hasStudyTime"]?:@"0";
     // NSString *isSigned = dic[@"isSigned"];
     
     NSString *aimStudyTime = dic[@"aimStudyTime"];
     
-    _countTimeLabel.text = [NSString stringWithFormat:@"学习目标时长%@分钟",aimStudyTime];
-    _titllLabel.text = [NSString stringWithFormat:@"%@",hasStudyTime];
-    _punchCardLabel.text = [NSString stringWithFormat:@"%@\n累计打卡",signTotalCount];
-    _getNumberLabel.text = [NSString stringWithFormat:@"%@\n已获学豆",totalCoin];
+    _countTimeLabel.text = [NSString stringWithFormat:@"学习目标时长%@分钟",aimStudyTime?:@"0"];
     
-    NSLog(@" num %f countnum %d 学习时长 %@",[hasStudyTime floatValue],[aimStudyTime intValue],_timeLabel.text);
+    _titllLabel.text = [NSString stringWithFormat:@"%@",hasStudyTime];
+    
+    _punchCardLabel.text = [NSString stringWithFormat:@"%@\n累计打卡",signTotalCount?:@"0"];
+    _getNumberLabel.text = [NSString stringWithFormat:@"%@\n已获学豆",totalCoin?:@"0"];
+    
+    NSLog(@" num %f countnum %d 学习时长 %@",[hasStudyTime floatValue],[aimStudyTime intValue],_timeLabel.text?:@"0");
     
     _progressView = [[XTProgressView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, 150)];
     
