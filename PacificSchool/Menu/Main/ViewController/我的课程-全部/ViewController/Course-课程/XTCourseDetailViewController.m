@@ -86,7 +86,8 @@
     if (height<40) {
         height = 40;
     }
-    float countHeight = 120 + 30 + 44 + 16 + height + 30;
+    CGFloat scroceH = 0.0;
+    float countHeight = 120 + 30 + 44 + 16 + height + scroceH;
     
     UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, countHeight)];
     headView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -153,7 +154,7 @@
         make.left.equalTo(titleLabel).offset(0);
         make.top.equalTo(titleLabel.mas_bottom);
         make.right.mas_equalTo(headView);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(scroceH);
     }];
     
     

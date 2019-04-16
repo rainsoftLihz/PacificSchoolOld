@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XTRankViewController">
             <connections>
+                <outlet property="iconImg" destination="kk7-O2-g8m" id="oEb-0T-hxB"/>
                 <outlet property="myRankLabel" destination="hTm-0I-kiB" id="Zfa-Qr-w8E"/>
                 <outlet property="numOneImg" destination="Zwe-fq-fas" id="qh4-Lv-uNL"/>
                 <outlet property="numThreeImg" destination="Xaj-CW-JK0" id="PHG-F0-bOJ"/>
@@ -146,7 +147,7 @@
         </view>
     </objects>
     <resources>
-        <image name="account_avatar" width="100" height="100"/>
+        <image name="account_avatar" width="33" height="33"/>
         <image name="herobg" width="375" height="241"/>
         <image name="numberOne" width="79" height="101"/>
         <image name="numberThree" width="70" height="93"/>

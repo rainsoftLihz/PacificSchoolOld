@@ -12,6 +12,7 @@
 #import "XTMainViewModel.h"
 #import "XTRankModel.h"
 @interface XTRankViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIImageView *iconImg;
 @property (weak, nonatomic) IBOutlet UIImageView *numOneImg;
 @property (weak, nonatomic) IBOutlet UIImageView *numTwoImg;
 @property (weak, nonatomic) IBOutlet UIImageView *numThreeImg;
@@ -28,6 +29,10 @@
     
     [self loadData];
     [self initUI];
+    
+    [self.iconImg sd_setImageWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@%@",kApi_FileServer_url,DEF_PERSISTENT_GET_OBJECT(kHeadImgUrl)?:@""]] placeholderImage:[UIImage imageNamed:@"account_avatar"]];
+    self.iconImg.layer.cornerRadius = 20;
+    self.iconImg.layer.masksToBounds = YES;
 }
 
 -(void)loadMore{
@@ -102,7 +107,7 @@
     self.myRankLabel.layer.cornerRadius = 20/2;
     self.myRankLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     self.myRankLabel.layer.masksToBounds = YES;
-    self.myRankLabel.text = [NSString stringWithFormat:@"%ld",self.rankNo];
+    self.myRankLabel.text = [NSString stringWithFormat:@" 我的排名:%ld",self.rankNo];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
