@@ -14,7 +14,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Speech/Speech.h>
 #import "XTDesModel.h"
-
+#import "XTMeViewModel.h"
+#import "XTVersion.h"
 @interface AppDelegate ()
 @property (nonatomic, strong) NSTimer *timer; //声明计时器属性
 @end
@@ -31,6 +32,7 @@
     sleep(2);
     [self switchRootViewController:NO];
     [self getRecord];
+    [self checkUpdate];
     
     return YES;
 }
@@ -56,20 +58,55 @@
 #pragma mark - 切换视图
 - (void)switchRootViewController:(BOOL)isLogin {
 
-    
     if ([DEF_PERSISTENT_GET_OBJECT(kIsLogin) isEqualToString:@"N"]||DEF_PERSISTENT_GET_OBJECT(kIsLogin) == nil) {
         XTBaseNavViewController *nav = [[XTBaseNavViewController alloc]initWithRootViewController:[XTLoginViewController new]];
         self.window.rootViewController = nav;
        
-        
     } else {
     
         XTBaseTabBarViewController *tabBar = [[XTBaseTabBarViewController alloc]init];
         tabBar.selectedIndex = 0;
         self.window.rootViewController = tabBar;
     }
+}
+
+#pragma mark --- update
+-(void)checkUpdate{
+    
+    [XTMeViewModel checkVersionSuccess:^(NSDictionary * _Nonnull result) {
+        if (result && result[@"data"]) {
+            NSDictionary* data = result[@"data"];
+            if (data[@"sysAppLog"]) {
+                XTVersion* version = [XTVersion mj_objectWithKeyValues:data[@"sysAppLog"]];
+                NSLog(@"version:%@",version.versionNo);
+                
+                if ([version needUpdate]) {
+                    NSLog(@"---->needUpata version");
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:version.versionDesc preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        UIApplication *application = [UIApplication sharedApplication];
+                        [application openURL:[NSURL URLWithString:version.downloadUrl] options:@{} completionHandler:^(BOOL success) {
+                            exit(0);
+                        }];
+                    }];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                        
+                    }];
+                    
+                    [alertController addAction:cancelAction];
+                    [alertController addAction:confirmAction];
+                    
+                    [self.window.rootViewController presentViewController:alertController animated:YES completion:nil];
+                }
+            }
+            
+        }
+    }];
     
 }
+
+
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -86,7 +123,7 @@
 
 -(NSTimer *)timer{
     if (_timer == nil) {
-        _timer = [NSTimer timerWithTimeInterval:0.1*60 target:self selector:@selector(goToLogin) userInfo:nil repeats:NO];
+        _timer = [NSTimer timerWithTimeInterval:15.0*60 target:self selector:@selector(goToLogin) userInfo:nil repeats:NO];
     }
     return _timer;
 }

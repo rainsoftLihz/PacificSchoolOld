@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *mapId ;
 @property (nonatomic,copy)NSString *mapTitle;
 @property (nonatomic,copy)NSString *modifyTime ;
-
+@property (nonatomic,copy)NSString *summary ;
 @end
 
 NS_ASSUME_NONNULL_END

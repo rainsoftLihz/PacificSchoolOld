@@ -9,30 +9,55 @@
 #ifndef ApiHeader_h
 #define ApiHeader_h
 
+/*
+ // Sit测试
+ //https://zhxy-ft.cpic.com.cn/elnApi/api/
+ // 公有云
+ //http://tapi.pomesoft.com/api/
+ // 生产
+ //https://aitraining.cpic.com.cn/elnApi/api/
+ */
+
 
 /*!
  *
- *  @brief 正式环境: 1
+ *  @brief 正式环境: 0
  *
- *  @brief 测试环境: 0
+ *  @brief 测试环境: 1
  */
-#define kAppIsProduction 0
+#define kAppIsProduction 1
+
+/*!
+ *
+ *  @brief 公有云环境: 1
+ */
+#define kAppIsPomesoft 1
+
 
 #if kAppIsProduction
 
-    /***********************************************Sit环境*****************************************************/
-    //
-    //// 基地址
-    #define kApi_base_url @"https://zhxy-ft.cpic.com.cn/elnApi/api/"
+   // 公网环境
+   #if kAppIsPomesoft
 
-    // 文件基地址
-    #define kApi_FileServer_url @"https://zhxy-ft.cpic.com.cn/elnFile"
+    #define kApi_base_url @"http://tapi.pomesoft.com/api/"
 
-    // 获取token
-    #define kGetToken @"https://zhxy-ft.cpic.com.cn/api/v1/examTraining?m=getByAccessToken"
+    #define kApi_FileServer_url @"http://fileserver.pomesoft.com"
 
-    // 通关考及情景演练
-    #define kZhxy @"https://zhxy-ft.cpic.com.cn/"
+    #define kVoiceRegister @"http://voiceprint.iflysec.com/api/voiceprint/register"
+
+    #define kVoiceAuthentication @"http://voiceprint.iflysec.com/api/voiceprint/authentication"
+
+    #define kZhxy @"https://learntestweb.wezhuiyi.com/"
+
+    //获取token
+    #define kGetToken @"https://learntestweb.wezhuiyi.com/api/v1/examTraining?m=getByAccessToken"
+
+
+  #else
+    // sit环境
+    #define kApi_base_url @"http://zhxy-ft.cpic.com.cn/elnApi/api/"
+
+    #define kApi_FileServer_url @"http://zhxy-ft.cpic.com.cn/elnFile"
 
     // 声纹注册
     #define kVoiceRegister @"https://zhxy-ft.cpic.com.cn/sw/api/voiceprint/register"
@@ -40,59 +65,38 @@
     // 声纹登录
     #define kVoiceAuthentication @"https://zhxy-ft.cpic.com.cn/sw/api/voiceprint/authentication"
 
+    // 通关考及情景演练
+    #define kZhxy @"https://zhxy-ft.cpic.com.cn/"
+
+    //获取token
+    #define kGetToken @"https://zhxy-ft.cpic.com.cn/api/v1/examTraining?m=getByAccessToken"
+
+   #endif
+
+
+
+
+
 #else
 
-    /***********************************************共有云环境*****************************************************/
+    /***生产环境****/
     // 基地址
-    //#define kApi_base_url @"http://tapi.pomesoft.com/api/"
+    #define kApi_base_url @"https://aitraining.cpic.com.cn/elnApi/api/"
 
-    // Sit测试
-    //https://zhxy-ft.cpic.com.cn/elnApi/api/
+    //文件基地址
+    #define kApi_FileServer_url @"http://aitraining.cpic.com.cn/elnFile"
 
-    // 公有云
-    //http://tapi.pomesoft.com/api/
+    //获取token
+    #define kGetToken @"https://aitraining.cpic.com.cn/api/v1/examTraining?m=getByAccessToken"
 
-    // 生产
-    //https://aitraining.cpic.com.cn/elnApi/api/
+    //通关考及情景演练
+    #define kZhxy @"https://aitraining.cpic.com.cn/"
 
+    //声纹注册
+    #define kVoiceRegister @"https://aitraining.cpic.com.cn/sw/api/voiceprint/register"
 
-    //
-    //// 文件基地址
-    #define kApi_FileServer_url @"http://fileserver.pomesoft.com"
-    //
-    //// 获取token
-    #define kGetToken @"https://learntestweb.wezhuiyi.com/api/v1/examTraining?m=getByAccessToken"
-    //
-    //// 通关考及情景演练
-    #define kZhxy @"https://learntestweb.wezhuiyi.com/"
-    //
-    //// 声纹注册
-    #define kVoiceRegister @"http://voiceprint.iflysec.com/api/voiceprint/register"
-    //
-    //// 声纹登录
-    #define kVoiceAuthentication @"http://voiceprint.iflysec.com/api/voiceprint/authentication"
-
-    /***********************************************生产环境*****************************************************/
-    // 基地址
-    #define kApi_base_url @"http://aitraining.cpic.com.cn/elnApi/api/"
-
-    //
-    //// 通关考及情景演练
-    //#define kZhxy @"https://aitraining.cpic.com.cn/"
-    //
-    //// 声纹注册
-    //#define kVoiceRegister @"https://aitraining.cpic.com.cn/sw/api/voiceprint/register"
-    //
-    //// 声纹登录
-    //#define kVoiceAuthentication @"https://aitraining.cpic.com.cn/sw/api/voiceprint/authentication"
-
-
-    //// 声纹注册
-    //#define kVoiceRegister @"http://voiceprint.iflysec.com/api/voiceprint/register"
-    //
-    //// 声纹登录
-    //#define kVoiceAuthentication @"http://voiceprint.iflysec.com/api/voiceprint/authentication"
-    //
+    //声纹登录
+    #define kVoiceAuthentication @"https://aitraining.cpic.com.cn/sw/api/voiceprint/authentication"
 
 #endif
 
@@ -124,7 +128,7 @@
 #define kGetCoursewareDetail ApiWithFormat(@"elnCourse.action?m=getDetail")
 
 //获取英雄榜
-#define kGetRankList ApiWithFormat(@"frontUserStatistics.action?m=getRankListByTotalScore")
+#define kGetRankList ApiWithFormat(@"frontUserStatistics.action?m=getRankListByRankNo")
 
 // 保存学习z时间
 #define kSaveInert ApiWithFormat(@"elnCourseStudyLog.action?m=insert")
@@ -180,4 +184,11 @@
 
 
 //https://learntestweb.wezhuiyi.com/api/v1/examTraining?m=getByAccessToken&coopCode=1&frontUserId=1&accessToken=1
+
+//版本更新
+#define kUpdate ApiWithFormat(@"sysAppLog.action?m=getLatest")
+
+//获取学豆
+#define kGetSign ApiWithFormat(@"/frontUserStatistics.action?m=getSignInfoByCPIC")
+
 #endif /* ApiHeader_h */

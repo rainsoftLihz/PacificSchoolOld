@@ -18,7 +18,8 @@
     UITableViewDataSource
 >
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong)NSArray *models;
+@property (nonatomic,strong)NSMutableArray *modelArr;
+@property (nonatomic,assign)NSInteger page;
 @end
 
 @implementation XTHistoryViewController
@@ -26,22 +27,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    [self initData];
+    self.page = 1;
     [self initUI];
-    
-    
+    [self initData];
 }
 
 - (void)initData {
-    
-    self.models = [NSArray array];
     WeakSelf
-    [XTMainViewModel getHistory:^(NSArray * _Nonnull result) {
-        weakSelf.models = result;
+    [XTMainViewModel getHistory:@{@"pageNo":@(self.page)} sucess:^(NSArray * _Nonnull result, NSInteger total) {
+        if (self.page == 1) {
+            weakSelf.modelArr = result.mutableCopy;
+        }else{
+            [weakSelf.modelArr addObjectsFromArray:result];
+        }
+        
+        if (weakSelf.page >= total) {
+            //没有数据了
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }else{
+            [weakSelf.tableView.mj_footer endRefreshing];
+        }
+        
         [weakSelf.tableView reloadData];
-    }];
-    
+    }];    
 }
 
 - (void)initUI {
@@ -58,7 +66,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
  
-    return self.models.count;
+    return self.modelArr.count;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -67,7 +75,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     XTHistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    [cell loadModel:self.models[indexPath.row]];
+    [cell loadModel:self.modelArr[indexPath.row]];
 //    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -75,7 +83,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     XTExamResultViewController *exam = [XTExamResultViewController new];
-    XTHistoryModel *model = self.models[indexPath.row];
+    XTHistoryModel *model = self.modelArr[indexPath.row];
     exam.detailId = model.detailId;
     exam.title = model.examTitle;
     [self.navigationController pushViewController:exam animated:YES];

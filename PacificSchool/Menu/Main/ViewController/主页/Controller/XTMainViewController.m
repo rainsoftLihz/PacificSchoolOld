@@ -34,9 +34,11 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic,strong)NSArray *sectionTitles;
-@property (nonatomic,strong)NSArray *elnCourseList2;
-@property (nonatomic,strong)NSArray *elnCourseList1;
+@property (nonatomic,strong)NSArray *elnMapListRecommend;
+@property (nonatomic,strong)NSArray *elnMapListHot;
 @property (nonatomic,strong)NSArray *elnMapList;
+
+
 @property (nonatomic,strong)XTMainHeadView *mainView;
 
 @end
@@ -68,8 +70,8 @@
     
     self.sectionTitles = @[@"我的课程",@"热门课程",@"智能推荐课程"];
     
-    self.elnCourseList2 = [NSArray array];
-    self.elnCourseList1 = [NSArray array];
+    self.elnMapListHot = [NSArray array];
+    self.elnMapListRecommend = [NSArray array];
     self.elnMapList = [NSArray array];
 }
 
@@ -107,8 +109,8 @@
     [XTMainViewModel postMainDataSuccess:^(NSDictionary * _Nonnull result) {
         
         weakSelf.elnMapList = [XTElnMapListModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"elnMapList"]];
-        weakSelf.elnCourseList2  = [XTCourseModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"elnCourseList2"]];
-        weakSelf.elnCourseList1  = [XTCourseModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"elnCourseList1"]];
+        weakSelf.elnMapListRecommend  = [XTElnMapListModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"elnMapListRecommend"]];
+        weakSelf.elnMapListHot  = [XTElnMapListModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"elnMapListHot"]];
         [weakSelf.tableView reloadData];
         
         [weakSelf configHeadUIData:result[@"data"]];
@@ -146,11 +148,11 @@
             return 1;
         }return 0;
     }else if(section ==1 ){
-        if (self.elnCourseList1.count>0) {
+        if (self.elnMapListHot.count>0) {
             return 1;
         }return 0;
     }else {
-        if (self.elnCourseList2.count>0) {
+        if (self.elnMapListRecommend.count>0) {
             return 1;
         }return 0;
     }
@@ -165,12 +167,12 @@
         return cell;
     }else if (indexPath.section == 1){
         XTElnTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
-        [cell loadModels:self.elnCourseList1];
+        [cell loadModels:self.elnMapListHot];
         cell.delegate = self;
         return cell;
     }else {
         XTElnTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
-        [cell loadModels:self.elnCourseList2];
+        [cell loadModels:self.elnMapListRecommend];
         cell.delegate = self;
         return cell;
     }
@@ -240,9 +242,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)selelctedCourseWithElnTableViewCell:(XTElnTableViewCell *)cell model:(XTCourseModel *)model {
+- (void)selelctedCourseWithElnTableViewCell:(XTElnTableViewCell *)cell model:(XTElnMapListModel *)model {
     XTCourseDetailViewController *vc = [[XTCourseDetailViewController alloc] init];
-    vc.mapId = model.courseId;
+    vc.mapId = model.mapId;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

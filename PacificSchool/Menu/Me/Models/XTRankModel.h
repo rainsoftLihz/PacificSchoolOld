@@ -21,7 +21,6 @@
 //    workId = 1001;
 //};
 
-NS_ASSUME_NONNULL_BEGIN
 @class XTFrontUserStatisticsModel;
 @interface XTRankModel : NSObject
 
@@ -53,4 +52,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END

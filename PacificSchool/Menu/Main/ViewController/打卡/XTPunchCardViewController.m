@@ -9,7 +9,7 @@
 #import "XTPunchCardViewController.h"
 #import "UIView+Gradient.h"
 #import "XTMainViewModel.h"
-
+#import "XTSignModel.h"
 @interface XTPunchCardViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *successBtn;
@@ -42,22 +42,27 @@
     [SVProgressHUD show];
     [XTMainViewModel getSignDataSuccess:^(NSDictionary * _Nonnull result) {
         
-        weakSelf.studentDateLabel.text = [NSString stringWithFormat:@"%@",result[@"data"][@"hasStudyTime"]];
-        weakSelf.signNumber1.text = [NSString stringWithFormat:@"%@天",result[@"data"][@"signMaxContinue"]];
-        weakSelf.signNumber.text = [NSString stringWithFormat:@"%@天",result[@"data"][@"signTotalCount"]];
-        
-        NSMutableAttributedString *allString = [[NSMutableAttributedString alloc]initWithString:@"我的学豆:"];
-        NSAttributedString *subString = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",result[@"data"][@"totalCoin"]] attributes:@{NSForegroundColorAttributeName:[UIColor brownColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
-
-        [allString appendAttributedString:subString];
-        weakSelf.myTotalCoinLabel.attributedText = allString;
-        NSString *isSigned = [NSString stringWithFormat:@"%@",result[@"data"][@"isSigned"]];
-        if ([isSigned isEqualToString:@"N"]) {
-            self.msgLabel.text = @"自动打卡失败";
-            [self.signImageView setImage:[UIImage imageNamed:@"signError.jpg"] forState:0];
-        }else {
-            self.msgLabel.text = @"自动打卡成功";
-            [self.signImageView setImage:[UIImage imageNamed:@"signinSuccess"] forState:0];
+        if (result[@"data"]) {
+            XTSignModel* model = [XTSignModel mj_objectWithKeyValues:result[@"data"]];
+            weakSelf.studentDateLabel.text = [NSString stringWithFormat:@"%@分钟",model.hasStudyTime?:@"0"];
+            weakSelf.signNumber1.text = [NSString stringWithFormat:@"%@天",model.signContinueCount?:@"0"];
+            weakSelf.signNumber.text = [NSString stringWithFormat:@"%@天",model.signTotalCount?:@"0"];
+            
+            
+            NSMutableAttributedString *allString = [[NSMutableAttributedString alloc]initWithString:@"我的学豆:"];
+            NSAttributedString *subString = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",model.totalScore?:@"0"] attributes:@{NSForegroundColorAttributeName:[UIColor brownColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+            
+            [allString appendAttributedString:subString];
+            weakSelf.myTotalCoinLabel.attributedText = allString;
+            NSString *isSigned = [NSString stringWithFormat:@"%@",model.isSigned];
+            if ([isSigned isEqualToString:@"N"]) {
+                self.msgLabel.text = @"自动打卡失败";
+                [self.signImageView setImage:[UIImage imageNamed:@"signError.jpg"] forState:0];
+            }else {
+                self.msgLabel.text = @"自动打卡成功";
+                [self.signImageView setImage:[UIImage imageNamed:@"signinSuccess"] forState:0];
+            }
+            
         }
         
     }];

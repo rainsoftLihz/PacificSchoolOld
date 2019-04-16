@@ -42,4 +42,22 @@
     
 }
 
+
++ (void)checkVersionSuccess:(void (^)(NSDictionary *result))success {
+    
+    [SVProgressHUD show];
+    [LTNetWorkManager post:kUpdate params:nil success:^(NSDictionary *res) {
+        NSLog(@"获取版本号--->%@",res);
+        if ([res[@"ret"] isEqualToString:@"0"]) {
+            success(res);
+        }else {
+            //[SVProgressHUD showErrorWithStatus:@"退出错误"];
+        }
+        [SVProgressHUD dismiss];
+        
+    } failure:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+    }];
+}
+
 @end

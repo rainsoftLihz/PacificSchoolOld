@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *totalCoin;
 @property (nonatomic,copy)NSString *workId;
 @property (nonatomic,copy)NSString *rankNo;
+@property (nonatomic,copy)NSString *rankScore;
+@property (nonatomic,copy)NSString *totalScore;
 @end
 
 NS_ASSUME_NONNULL_END

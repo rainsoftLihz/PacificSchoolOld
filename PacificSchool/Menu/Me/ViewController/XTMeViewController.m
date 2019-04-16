@@ -34,7 +34,7 @@
 @property (nonatomic,strong)XTMeHeadView *headView;
 @property (nonatomic,strong)NSMutableArray *socres;
 @property (nonatomic,strong)NSMutableArray *titles;
-
+@property (nonatomic,assign)NSInteger rankNo;
 @end
 
 @implementation XTMeViewController
@@ -83,6 +83,9 @@
             rankNoPre = @"0";
         }
         __weakSelf.headView.rankLabel.text = rankNo;
+        
+        __weakSelf.rankNo = rankNo.integerValue;
+        
         __weakSelf.headView.scoreLabel.text = rankScore;
         NSLog(@" === %@ === %@",[rankNo class],rankScore);
         
@@ -188,6 +191,7 @@
 - (void)heroEvent:(UIButton *)btn {
     
     XTRankViewController *rankVC = [XTRankViewController new];
+    rankVC.rankNo = self.rankNo;
     [self.navigationController pushViewController:rankVC animated:YES];
     
 }

@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XTMeViewModel : NSObject
 + (void)uploadUserImage:(UIImage *)image success:(void (^)(NSDictionary *result))success;
+
++ (void)checkVersionSuccess:(void (^)(NSDictionary *result))success;
+
 @end
 
 NS_ASSUME_NONNULL_END

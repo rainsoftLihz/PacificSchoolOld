@@ -33,16 +33,17 @@
     }];
 }
 
-+ (void)getHistory:(void (^)(NSArray *result))success {
++ (void)getHistory:(NSDictionary*)params sucess:(void (^)(NSArray *result,NSInteger total))success {
     
     [SVProgressHUD show];
    
-    [LTNetWorkManager post:kGetHistory params:nil success:^(NSDictionary *result) {
+    [LTNetWorkManager post:kGetHistory params:params success:^(NSDictionary *result) {
         NSLog(@"历史 == %@",result);
         if ([result[@"ret"] isEqualToString:@"0"]) {
             NSArray *list = result[@"data"][@"list"];
             NSArray *models =  [XTHistoryModel mj_objectArrayWithKeyValuesArray:list];
-            success(models);
+            NSNumber* num = result[@"data"][@"total"];
+            success(models,num.integerValue);
         }
         [SVProgressHUD dismiss];
         
@@ -138,7 +139,7 @@
 }
 
 + (void)getSignDataSuccess:(void (^)(NSDictionary *result))success {
-    [LTNetWorkManager post:kGetSignInfo params:nil success:^(NSDictionary *result) {
+    [LTNetWorkManager post:kGetSign params:nil success:^(NSDictionary *result) {
         NSLog(@"获取打卡信息%@",result);
         [SVProgressHUD dismiss];
         success(result);
@@ -304,14 +305,17 @@
 
 
 
-+ (void)getRankSuccess:(void (^)(NSArray *result))success {
++ (void)getRank:(NSDictionary *)param Success:(void (^)(NSArray *result,NSInteger total))success {
     [SVProgressHUD show];
-    [LTNetWorkManager post:kGetRankList params:nil success:^(NSDictionary *result) {
+    [LTNetWorkManager post:kGetRankList params:param success:^(NSDictionary *result) {
         NSLog(@"排名%@",result);
         if ([result[@"ret"] isEqualToString:@"0"]) {
             NSArray *list = result[@"data"][@"list"];
             NSArray *models = [XTRankModel mj_objectArrayWithKeyValuesArray:list];
-            success(models);
+            
+            NSNumber* num = result[@"data"][@"total"];
+            
+            success(models,num.integerValue);
         }
         [SVProgressHUD dismiss];
         

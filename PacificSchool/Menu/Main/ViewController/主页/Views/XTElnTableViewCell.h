@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@class XTCourseModel;
+@class XTElnMapListModel;
 @protocol XTElnTableViewCellDelegate;
 @interface XTElnTableViewCell : UITableViewCell
 
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol XTElnTableViewCellDelegate <NSObject>
 
-- (void)selelctedCourseWithElnTableViewCell:(XTElnTableViewCell *)cell model:(XTCourseModel *)model;
+- (void)selelctedCourseWithElnTableViewCell:(XTElnTableViewCell *)cell model:(XTElnMapListModel *)model;
 
 @end
 NS_ASSUME_NONNULL_END

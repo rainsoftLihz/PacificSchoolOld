@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5329C10922657A2200EC8ABE /* XTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10822657A2200EC8ABE /* XTVersion.m */; };
+		5329C10C2265B75600EC8ABE /* XTSignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10B2265B75600EC8ABE /* XTSignModel.m */; };
 		539013722264733600073F3B /* NSNumber+ToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 539013712264733600073F3B /* NSNumber+ToString.m */; };
 		539013A222648B0000073F3B /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5390137622648AFF00073F3B /* UIScrollView+MJRefresh.m */; };
 		539013A322648B0000073F3B /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 5390137722648AFF00073F3B /* MJRefreshConst.m */; };
@@ -254,6 +256,10 @@
 
 /* Begin PBXFileReference section */
 		356760506CD4B0E6EC3FC502 /* Pods_PacificSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PacificSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5329C10722657A2200EC8ABE /* XTVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTVersion.h; sourceTree = "<group>"; };
+		5329C10822657A2200EC8ABE /* XTVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTVersion.m; sourceTree = "<group>"; };
+		5329C10A2265B75600EC8ABE /* XTSignModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTSignModel.h; sourceTree = "<group>"; };
+		5329C10B2265B75600EC8ABE /* XTSignModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTSignModel.m; sourceTree = "<group>"; };
 		539013702264733600073F3B /* NSNumber+ToString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+ToString.h"; sourceTree = "<group>"; };
 		539013712264733600073F3B /* NSNumber+ToString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+ToString.m"; sourceTree = "<group>"; };
 		5390137622648AFF00073F3B /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
@@ -1350,6 +1356,8 @@
 				FB00B51222329AA80052359E /* XTElnMapUserModel.m */,
 				FBDD56B1223393DE008442B1 /* XTCourseExamModel.h */,
 				FBDD56B2223393DE008442B1 /* XTCourseExamModel.m */,
+				5329C10A2265B75600EC8ABE /* XTSignModel.h */,
+				5329C10B2265B75600EC8ABE /* XTSignModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1396,6 +1404,8 @@
 		FB2A13FA2214662D00440901 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5329C10722657A2200EC8ABE /* XTVersion.h */,
+				5329C10822657A2200EC8ABE /* XTVersion.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1942,6 +1952,7 @@
 				539013A322648B0000073F3B /* MJRefreshConst.m in Sources */,
 				539013A222648B0000073F3B /* UIScrollView+MJRefresh.m in Sources */,
 				FBD00958222D7DBD0025C5E5 /* XTSettingTableViewCell.m in Sources */,
+				5329C10922657A2200EC8ABE /* XTVersion.m in Sources */,
 				539013722264733600073F3B /* NSNumber+ToString.m in Sources */,
 				FB9CAD362234F6380070E8D6 /* XTTitleView.m in Sources */,
 				FB23922C22490A70001ADD22 /* NSObject+MJClass.m in Sources */,
@@ -2000,6 +2011,7 @@
 				FB23922D22490A70001ADD22 /* NSString+MJExtension.m in Sources */,
 				FB2392B422490E00001ADD22 /* UIImage+GIF.m in Sources */,
 				FB0D2DC12253B30B00EF451C /* XTMeViewModel.m in Sources */,
+				5329C10C2265B75600EC8ABE /* XTSignModel.m in Sources */,
 				539013A722648B0000073F3B /* MJRefreshBackGifFooter.m in Sources */,
 				539013A522648B0000073F3B /* UIScrollView+MJExtension.m in Sources */,
 				FB23920E224908F4001ADD22 /* AFSecurityPolicy.m in Sources */,
@@ -2191,6 +2203,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5G6EMS5WNQ;
 				ENABLE_BITCODE = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = PacificSchool/PrefixHeader.pch;
 				INFOPLIST_FILE = PacificSchool/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2202,7 +2215,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/PacificSchool/Base/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.taipingyangedu.www;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cpic.sxzxysit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

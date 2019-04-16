@@ -25,7 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)getCourseDetailSuccess:(NSDictionary *)param success:(void (^)(XTCourseDetailModel *result))success;
 
-+ (void)getRankSuccess:(void (^)(NSArray *result))success;
++ (void)getRank:(NSDictionary *)param Success:(void (^)(NSArray *result,NSInteger total))success;
+
++ (void)getHistory:(NSDictionary*)params sucess:(void (^)(NSArray *result,NSInteger total))success;
 
 + (void)getCoursewareDetailSuccess:(NSDictionary *)param success:(void (^)(XTCoursewareDetailModel *result))success;
 

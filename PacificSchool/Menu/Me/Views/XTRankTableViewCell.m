@@ -23,7 +23,7 @@
     self.titleLabel.text = model.realName;
     NSLog(@" 名字 --%@",model.realName);
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kApi_FileServer_url,model.headimgurl]] placeholderImage:[UIImage imageNamed:@"account_avatar"]];
-    self.subLabel.text = model.frontUserStatistics.rankNo;
+    self.subLabel.text = model.frontUserStatistics.rankScore;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

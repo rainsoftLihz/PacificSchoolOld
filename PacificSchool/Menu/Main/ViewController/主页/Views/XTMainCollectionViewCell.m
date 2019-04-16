@@ -7,7 +7,7 @@
 //
 
 #import "XTMainCollectionViewCell.h"
-#import "XTCourseModel.h"
+#import "XTElnMapListModel.h"
 @implementation XTMainCollectionViewCell
 
 - (void)awakeFromNib {
@@ -17,9 +17,9 @@
     self.headImageView.layer.masksToBounds = YES;
 }
 
-- (void)loadModel:(XTCourseModel *)model{
-    self.titleLabel.text = model.courseTitle;
-    self.subTitleLabel.text = [NSString stringWithFormat:@"已有%@人学习",model.viewCount];
+- (void)loadModel:(XTElnMapListModel *)model{
+    self.titleLabel.text = model.mapTitle;
+    self.subTitleLabel.text = [NSString stringWithFormat:@"已有%@人学习",model.summary];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kApi_FileServer_url,model.coverImg]]];
 }
 

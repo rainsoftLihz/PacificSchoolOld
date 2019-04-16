@@ -140,11 +140,14 @@
     NSString *userid = DEF_PERSISTENT_GET_OBJECT(kUserId);
     NSString *username = DEF_PERSISTENT_GET_OBJECT(kUserName);
     NSString *token =  DEF_PERSISTENT_GET_OBJECT(kUserToken);
+    NSString *headimgurl =  DEF_PERSISTENT_GET_OBJECT(kHeadImgUrl);
     NSString *coopcode = @"cpic";
     if ([LTTools isBlankString:userid]) userid = @"";
     if ([LTTools isBlankString:username]) username = @"";
     if ([LTTools isBlankString:token]) token = @"";
-    NSDictionary *commParam = @{ @"frontUserId" : userid, @"accessToken" : token,@"coopCode":coopcode};
+    if ([LTTools isBlankString:headimgurl]) headimgurl = @"";
+
+    NSDictionary *commParam = @{ @"frontUserId":userid,@"accessToken":token,@"coopCode":coopcode,@"username":username,@"headimgurl":headimgurl,@"dparam":@"ios"};
     return  commParam;
 }
 

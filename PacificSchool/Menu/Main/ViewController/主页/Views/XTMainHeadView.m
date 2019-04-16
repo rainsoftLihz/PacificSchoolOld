@@ -44,7 +44,7 @@
 - (void)loadData:(NSDictionary *)dic {
     
     NSString *signTotalCount = dic[@"signTotalCount"];
-    NSString *totalCoin = dic[@"totalCoin"];
+    NSString *totalCoin = dic[@"totalScore"];
     NSString *hasStudyTime = dic[@"hasStudyTime"]?:@"0";
     // NSString *isSigned = dic[@"isSigned"];
     

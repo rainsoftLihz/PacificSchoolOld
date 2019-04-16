@@ -20,4 +20,5 @@
 #import "UIImageView+WebCache.h"
 #import "XTBaseViewController.h"
 #import "NSNumber+ToString.h"
+#import "MJRefresh.h"
 #endif /* Header_h */
