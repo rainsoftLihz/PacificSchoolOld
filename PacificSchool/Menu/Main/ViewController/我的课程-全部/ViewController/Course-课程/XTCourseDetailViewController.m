@@ -20,7 +20,7 @@
 #import "LSDateTool.h"
 //#import "XTCustomsPassViewController.h"
 #import "XTSceneExerciseViewController.h"
-
+#import "XTPingfenView.h"
 @interface XTCourseDetailViewController ()
 <
     UITableViewDelegate,
@@ -29,6 +29,12 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic,strong) XTCourseDetailModel *model;
 @property(nonatomic,strong)AVAudioPlayer *player;
+
+@property(nonatomic,strong)XTPingfenView *pfView;
+
+@property(nonatomic,strong)UIImageView *imageView;
+@property(nonatomic,strong)UILabel *titleLabel;
+@property(nonatomic,strong)UILabel *detailLabel;
 @end
 
 @implementation XTCourseDetailViewController
@@ -37,8 +43,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+    self.title = @"课程详情";
+    self.navigationItem.rightBarButtonItem = [self setRightButtonItem];
     [self initData];
-    
 }
 
 - (void)initData {
@@ -53,15 +61,32 @@
     
 }
 
+
+- (UIBarButtonItem *)setRightButtonItem {
+    
+    UIButton* clearBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    clearBtn.frame = CGRectMake(0, 0, 44, 44);
+    [clearBtn setTitle:@"评分" forState:UIControlStateNormal];
+    [clearBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    [clearBtn addTarget:self action:@selector(pingFen) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* someBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearBtn];
+    return someBarButtonItem;
+}
+
+-(void)pingFen{
+    self.pfView = [[XTPingfenView alloc] initWithFrame:self.view.window.bounds];
+    [self.view.window addSubview:self.pfView];
+}
+
 - (void)initUI {
  
-    self.title = @"课程详情";
     self.tableView.tableFooterView = [UIView new ];
     float height =[LTTools rectWidthAndHeightWithStr:[NSString stringWithFormat:@"   课程简介:%@",self.model.elnMap.summary] AndFont:12 WithStrWidth:kScreenW- 16];
     if (height<40) {
         height = 40;
     }
-    float countHeight = 120 + 30 + 44 + 16 + height;
+    float countHeight = 120 + 30 + 44 + 16 + height + 30;
     
     UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenW, countHeight)];
     headView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -71,14 +96,22 @@
 
     NSString *urlString = [NSString stringWithFormat:@"%@%@",kApi_FileServer_url,self.model.elnMap.coverImg];
     [imageView sd_setImageWithURL:[NSURL URLWithString:urlString]];
-    [headView addSubview:imageView];
+    [headView addSubview:self.imageView=imageView];
     
     UILabel *titleLabel = [UILabel new];
     titleLabel.text = [NSString stringWithFormat:@"   %@",self.model.elnMap.mapTitle];
     titleLabel.font = [UIFont systemFontOfSize:17 weight:40];
     titleLabel.backgroundColor = [UIColor whiteColor];
 
-    [headView addSubview:titleLabel];
+    [headView addSubview:self.titleLabel = titleLabel];
+    
+    
+    UILabel *scroeLabel = [UILabel new];
+    scroeLabel.text = [NSString stringWithFormat:@"   课程评分:%@",@"6.9"];
+    scroeLabel.font = [UIFont systemFontOfSize:15];
+    scroeLabel.textColor = UIColor.darkGrayColor;
+    scroeLabel.backgroundColor = [UIColor whiteColor];
+    [headView addSubview:scroeLabel];
     
     UILabel *detailLabel = [UILabel new];
     detailLabel.font = [UIFont systemFontOfSize:12];
@@ -113,14 +146,23 @@
         make.left.equalTo(imageView).offset(0);
         make.right.equalTo(imageView).offset(0);
         make.top.equalTo(imageView.mas_bottom);
-        make.height.mas_equalTo(height);
+        make.height.mas_equalTo(30);
     }];
+    
+    [scroeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(titleLabel).offset(0);
+        make.top.equalTo(titleLabel.mas_bottom);
+        make.right.mas_equalTo(headView);
+        make.height.mas_equalTo(30);
+    }];
+    
+    
     
     [detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(titleLabel).offset(0);
-        make.right.equalTo(titleLabel).offset(0);
-        make.top.equalTo(titleLabel.mas_bottom);
-        make.height.mas_equalTo(30);
+        make.right.mas_equalTo(headView);
+        make.top.equalTo(scroeLabel.mas_bottom);
+        make.height.mas_equalTo(height);
     }];
     
     [proLabel mas_makeConstraints:^(MASConstraintMaker *make) {

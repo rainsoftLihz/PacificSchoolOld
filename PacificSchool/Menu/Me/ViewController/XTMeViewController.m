@@ -221,7 +221,7 @@
         XTMeSubTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell1"];
         cell.headImageView.image = [UIImage imageNamed:images[indexPath.row]];
         cell.titleLabel.text = titles[indexPath.row];
-
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else {
         
@@ -229,7 +229,7 @@
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
         cell.textLabel.text = titles[indexPath.row];
         cell.textLabel.font = [UIFont systemFontOfSize:12];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if ((indexPath.section == 1 && indexPath.row == 1)||(indexPath.section == 1 && indexPath.row == 0)) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }

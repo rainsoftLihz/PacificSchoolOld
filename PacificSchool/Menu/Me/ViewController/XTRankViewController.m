@@ -147,7 +147,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         XTRankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        cell.indexLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+1];
+        cell.indexLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+4];
         [cell loadModel:self.modelArr[indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;

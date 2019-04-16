@@ -181,9 +181,7 @@
     return _wkWebView;
 }
 
-- (void)dealloc {
 
-}
 - (void)viewWillDisappear:(BOOL)animated {
 
     [super viewWillDisappear:animated];
@@ -204,6 +202,8 @@
     
 }
 
-
+-(void)dealloc{
+    NSLog(@"======dealloc========");
+}
 
 @end
