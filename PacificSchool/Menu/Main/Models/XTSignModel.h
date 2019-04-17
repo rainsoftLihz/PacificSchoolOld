@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 //累计打卡次数
 @property(nonatomic,strong) NSString* signTotalCount;
 
-//我的学豆
+//我的智慧豆
 @property(nonatomic,strong) NSString* totalScore;
 @end
 

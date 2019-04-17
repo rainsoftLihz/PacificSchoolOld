@@ -327,10 +327,10 @@ UITableViewDataSource
     commentBtn.layer.cornerRadius = 2;
     [commentBtn addTarget:self action:@selector(commentEvent:) forControlEvents:UIControlEventTouchUpInside];
     [_commentView addSubview:commentBtn];
-    
+   
     [_commentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
-        make.bottom.equalTo(self.view);
+        make.bottom.equalTo(self.view.mas_bottom).offset(-kSafeArea);
         make.height.mas_equalTo(48);
     }];
     

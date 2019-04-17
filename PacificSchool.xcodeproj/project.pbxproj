@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		531A6EB82266D5EF00D0DCB8 /* NSString+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 531A6EB72266D5EF00D0DCB8 /* NSString+Tool.m */; };
 		5329C10922657A2200EC8ABE /* XTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10822657A2200EC8ABE /* XTVersion.m */; };
 		5329C10C2265B75600EC8ABE /* XTSignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10B2265B75600EC8ABE /* XTSignModel.m */; };
 		5329C10F2265D4F300EC8ABE /* XTPingfenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10E2265D4F300EC8ABE /* XTPingfenView.m */; };
@@ -258,6 +259,8 @@
 
 /* Begin PBXFileReference section */
 		356760506CD4B0E6EC3FC502 /* Pods_PacificSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PacificSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		531A6EB62266D5EF00D0DCB8 /* NSString+Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Tool.h"; sourceTree = "<group>"; };
+		531A6EB72266D5EF00D0DCB8 /* NSString+Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tool.m"; sourceTree = "<group>"; };
 		5329C10722657A2200EC8ABE /* XTVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTVersion.h; sourceTree = "<group>"; };
 		5329C10822657A2200EC8ABE /* XTVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTVersion.m; sourceTree = "<group>"; };
 		5329C10A2265B75600EC8ABE /* XTSignModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTSignModel.h; sourceTree = "<group>"; };
@@ -745,6 +748,8 @@
 			children = (
 				539013702264733600073F3B /* NSNumber+ToString.h */,
 				539013712264733600073F3B /* NSNumber+ToString.m */,
+				531A6EB62266D5EF00D0DCB8 /* NSString+Tool.h */,
+				531A6EB72266D5EF00D0DCB8 /* NSString+Tool.m */,
 			);
 			path = Catgary;
 			sourceTree = "<group>";
@@ -1981,6 +1986,7 @@
 				FB18A33B2232BF72001496CB /* XTGradientLayer.m in Sources */,
 				FB3D6A56222EBFEB00C8D2AD /* NSObject+ZXPUnicode.m in Sources */,
 				FB18A34F2232D4E3001496CB /* XTRankModel.m in Sources */,
+				531A6EB82266D5EF00D0DCB8 /* NSString+Tool.m in Sources */,
 				FB2392DB22491071001ADD22 /* FMDatabaseQueue.m in Sources */,
 				FB9CAD1D2234F2180070E8D6 /* XTMyCourseListViewController.m in Sources */,
 				FB23933222491135001ADD22 /* NSArray+MASAdditions.m in Sources */,

@@ -59,7 +59,7 @@
 
 - (IBAction)loginEvent:(id)sender {
     
-    if (self.accountTF.text.length==0 &&self.passwordTF.text.length==0) {
+    if (self.accountTF.text.length==0 || self.passwordTF.text.length==0) {
         [self showErrorStatus:@"请登录信息填写完整"];
     }else {
         [self loginRequest];

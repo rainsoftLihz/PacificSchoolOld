@@ -67,7 +67,7 @@
         NSString *rankNo = [NSString stringWithFormat:@"%@",result[@"data"][@"frontUserStatistics"][@"rankNo"]];
         
         NSLog(@" 本次排名 %@",result);
-        if ([rankNo isEqual:[NSNull null]] || rankNo == nil) {
+        if ([rankNo isEqual:[NSNull null]] || rankNo == nil || [rankNo isEqualToString:@"(null)"]) {
             rankNo = @"0";
         }
         // 综合排名
@@ -82,7 +82,7 @@
         if ([rankNoPre isEqual:[NSNull null]] || rankNoPre == nil) {
             rankNoPre = @"0";
         }
-        __weakSelf.headView.rankLabel.text = rankNo;
+        __weakSelf.headView.rankLabel.text = rankNo?:@"0";
         
         __weakSelf.rankNo = rankNo.integerValue;
         

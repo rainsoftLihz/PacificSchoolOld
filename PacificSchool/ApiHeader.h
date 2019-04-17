@@ -188,7 +188,13 @@
 //版本更新
 #define kUpdate ApiWithFormat(@"sysAppLog.action?m=getLatest")
 
-//获取学豆
+//获取智慧豆
 #define kGetSign ApiWithFormat(@"/frontUserStatistics.action?m=getSignInfoByCPIC")
+
+//提交评分
+#define kSubmitScore ApiWithFormat(@"/commonScoreLog.action?m=insertByElnMap")
+
+//评分详情
+#define kScoreDetail ApiWithFormat(@"/commonScoreLog.action?m=getDetailByElnMap")
 
 #endif /* ApiHeader_h */

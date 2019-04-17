@@ -109,7 +109,7 @@
     
     // 声纹核身
     NSDictionary *resultdic = [result.voiceAuthResult mj_JSONObject];
-    if ([resultdic[@"score"] floatValue] >= 0.03 ) {
+    if ([resultdic[@"score"] floatValue] >= 0.01 ) {
         self.voiceResultLabel.text = @"通过";
     }else {
         self.voiceResultLabel.text = @"未通过";
@@ -127,7 +127,7 @@
         // 大于 60 小于 80
         self.resultLabel.text = @"合格";
         
-    }else if (score >(0) && score < (60) ){
+    }else if (score >= 0 && score < (60) ){
         
         // 大于 0 小于 60
         self.resultLabel.text = @"不合格";

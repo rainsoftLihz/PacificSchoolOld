@@ -8,7 +8,7 @@
 
 #import "LTNetWorkManager.h"
 #import "AFNetworking.h"
-
+#import "AppDelegate.h"
 @implementation LTNetWorkManager
 
 + (void)get:(NSString *)url params:(NSDictionary *)params success:(void (^)(NSDictionary *result))success failure:(void (^)(NSError *error))failure {
@@ -78,7 +78,18 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        success(responseObject);
+        
+        
+        NSDictionary* dic = (NSDictionary*)responseObject;
+        if (dic && [dic[@"err_code"] isEqualToString:@"7777"]) {
+            NSLog(@"== 777777 ==");
+            __weak AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appdelegate  goToLogin];
+            
+        }else {
+            success(responseObject);
+        }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"❕数据请求错误返回数据%@",error);
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

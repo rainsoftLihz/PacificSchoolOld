@@ -35,7 +35,7 @@
 #define kIsLogin  @"kIsLogin"
 #define kStudyTime  @"kStudyTime"
 
-
+#define kErrcode7777 @"kErrcode7777"
 
 #define DEF_PERSISTENT_GET_OBJECT(key)  [[NSUserDefaults standardUserDefaults] objectForKey:key]
 #define kUserDefaults [NSUserDefaults standardUserDefaults]
@@ -58,5 +58,10 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];       \
 //#else //发布阶段
 //#define NSLog(...)
 //#endif
+
+
+// 判断iPhone X
+#define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kSafeArea (kDevice_Is_iPhoneX ? 34 : 0)
 
 #endif /* UserDefine_h */

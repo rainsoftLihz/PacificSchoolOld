@@ -22,15 +22,18 @@
     // Do any additional setup after loading the view.
     [self initData];
     [self configTab];
+    
+    //防止tabbar跳动
+    [UITabBar appearance].translucent = NO;
 }
 
 #pragma mark -  初始化数据
 - (void)initData {
+
+    self.titleAry = @[@"课堂",@"学院",@"我的"];
     
-    //self.titleAry = @[@"首页",@"课程",@"学习",@"学友圈",@"我的"];
-    self.titleAry = @[@"课程",@"学院",@"我的"];
     self.imageNamesN = @[[UIImage imageNamed:@"main_n"],[UIImage imageNamed:@"library_n"],[UIImage imageNamed:@"me_n"]];
-//
+
     self.imageNamesS = @[[UIImage imageNamed:@"main_s"],[UIImage imageNamed:@"library_sel"],[UIImage imageNamed:@"me_sel"]];
     
     self.viewControllerAay = @[@"XTMainViewController",@"XTLibraryViewController",@"XTMeViewController"];
@@ -38,11 +41,6 @@
 
 #pragma mark -  配置底部按钮
 - (void)configTab {
-    
-    
-//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor grayColor], NSForegroundColorAttributeName, [UIFont systemFontOfSize:13], NSFontAttributeName, nil] forState:UIControlStateNormal];
-//
-//    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: kColorRGB(36, 153, 220), NSForegroundColorAttributeName, [UIFont systemFontOfSize:13], NSFontAttributeName, nil] forState:UIControlStateSelected];
     
     NSMutableArray *vcs = [NSMutableArray array];
     

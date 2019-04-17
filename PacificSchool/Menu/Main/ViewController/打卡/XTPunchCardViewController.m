@@ -49,18 +49,19 @@
             weakSelf.signNumber.text = [NSString stringWithFormat:@"%@天",model.signTotalCount?:@"0"];
             
             
-            NSMutableAttributedString *allString = [[NSMutableAttributedString alloc]initWithString:@"我的学豆:"];
+            NSMutableAttributedString *allString = [[NSMutableAttributedString alloc]initWithString:@"我的智慧豆:"];
             NSAttributedString *subString = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",model.totalScore?:@"0"] attributes:@{NSForegroundColorAttributeName:[UIColor brownColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
             
             [allString appendAttributedString:subString];
             weakSelf.myTotalCoinLabel.attributedText = allString;
             NSString *isSigned = [NSString stringWithFormat:@"%@",model.isSigned];
-            if ([isSigned isEqualToString:@"N"]) {
-                self.msgLabel.text = @"自动打卡失败";
-                [self.signImageView setImage:[UIImage imageNamed:@"signError.jpg"] forState:0];
-            }else {
+            if ([isSigned isEqualToString:@"Y"]) {
                 self.msgLabel.text = @"自动打卡成功";
                 [self.signImageView setImage:[UIImage imageNamed:@"signinSuccess"] forState:0];
+            }else  {
+                self.msgLabel.text = @"自动打卡失败";
+                [self.signImageView setImage:[UIImage imageNamed:@"signError.jpg"] forState:0];
+                
             }
             
         }

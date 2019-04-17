@@ -95,10 +95,6 @@
     self.tableView.tableHeaderView = _mainView;
     [self.tableView registerNib:[UINib nibWithNibName:@"XTMainTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"XTElnTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell1"];
-    
-//    [_mainView addGradientColor];
-    
-    [self getMainData];
 }
 
 

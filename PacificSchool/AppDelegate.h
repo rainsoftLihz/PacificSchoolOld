@@ -14,5 +14,7 @@
 
 - (void)switchRootViewController:(BOOL)isLogin;
 
+-(void)goToLogin;
+
 @end
 

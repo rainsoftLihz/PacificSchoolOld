@@ -56,6 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getDetail:(void (^)(NSDictionary *result))success;
 
 + (void)getSaveSign:(void (^)(NSDictionary *result))success;
+
++ (void)submitScroeSuccess:(NSDictionary *)param success:(void (^)(NSDictionary *result))success;
 @end
 
 NS_ASSUME_NONNULL_END

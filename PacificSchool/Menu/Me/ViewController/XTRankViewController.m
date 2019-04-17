@@ -45,20 +45,23 @@
     
     WeakSelf
     [XTMainViewModel getRank:@{@"pageNo":@(self.page)} Success:^(NSArray * _Nonnull result,NSInteger total) {
-        if (self.page == 1) {
+        
+        [weakSelf.tableView.mj_footer endRefreshing];
+        
+        if (weakSelf.page == 1) {
            weakSelf.modelArr = result.mutableCopy;
            [weakSelf setUpUIWithData];
         }else{
            [weakSelf.modelArr addObjectsFromArray:result];
+            if (weakSelf.page == 10) {
+                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
         }
         
         if (weakSelf.page >= total) {
             //没有数据了
             [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
-        }else{
-            [weakSelf.tableView.mj_footer endRefreshing];
         }
-        
         
         [weakSelf.tableView reloadData];
     }];
@@ -73,30 +76,48 @@
         UIImageView* imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
         [imgV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kApi_FileServer_url,modell.headimgurl]] placeholderImage:[UIImage imageNamed:@"account_avatar"]];
         
+        UILabel* scroeLab = [[UILabel alloc] init];
+        scroeLab.textColor = UIColor.whiteColor;
+        scroeLab.font = kFont(14.0);
+        scroeLab.textAlignment = NSTextAlignmentCenter;
+        scroeLab.text = modell.frontUserStatistics.rankScore;
+        [self.view addSubview:scroeLab];
         if (i == 0) {
             self.numberOneLabel.text = modell.realName;
-            [self addImgv:imgV To:self.numOneImg];
+            [self addImgv:imgV To:self.numOneImg top:12.0];
+            [scroeLab mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.mas_equalTo(self.numberOneLabel.mas_centerX);
+                make.top.mas_equalTo(self.numberOneLabel.mas_bottom).offset(0.0);;
+            }];
             
         }else if (i == 1){
             self.numberTwoLabel.text = modell.realName;
-            [self addImgv:imgV To:self.numTwoImg];
+            [self addImgv:imgV To:self.numTwoImg top:8.0];
+            [scroeLab mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.mas_equalTo(self.numberTwoLabel.mas_centerX);
+                make.top.mas_equalTo(self.numberTwoLabel.mas_bottom).offset(0.0);;
+            }];
         }else {
             self.numberThreeLabel.text = modell.realName;
-            [self addImgv:imgV To:self.numThreeImg];
+            [self addImgv:imgV To:self.numThreeImg top:10.0];
+            [scroeLab mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.mas_equalTo(self.numberThreeLabel.mas_centerX);
+                make.top.mas_equalTo(self.numberThreeLabel.mas_bottom).offset(0.0);;
+            }];
         }
     }
 }
 
--(void)addImgv:(UIImageView*)imgV To:(UIImageView*)toImgV{
+-(void)addImgv:(UIImageView*)imgV To:(UIImageView*)toImgV top:(NSInteger)topSpace{
     [toImgV addSubview:imgV];
     //212 280
     [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(toImgV);
-        make.top.mas_equalTo(toImgV.mas_top).offset(15.0);
-        make.size.mas_equalTo(CGSizeMake(60, 60));
+        make.top.mas_equalTo(toImgV.mas_top).offset(topSpace);
+        make.size.mas_equalTo(CGSizeMake(66, 66));
     }];
     
-    imgV.layer.cornerRadius = 60/2.0;
+    imgV.layer.cornerRadius = 66/2.0;
     imgV.layer.masksToBounds = YES;
 }
     
@@ -146,14 +167,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.modelArr.count;
+    return self.modelArr.count>3?self.modelArr.count-3:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         XTRankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         cell.indexLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+4];
-        [cell loadModel:self.modelArr[indexPath.row]];
+        if (self.modelArr.count > indexPath.row+3) {
+            [cell loadModel:self.modelArr[indexPath.row+3]];
+        }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else {

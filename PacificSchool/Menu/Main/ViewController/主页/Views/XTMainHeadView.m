@@ -45,6 +45,9 @@
     
     NSString *signTotalCount = dic[@"signTotalCount"];
     NSString *totalCoin = dic[@"totalScore"];
+    if (!totalCoin || [totalCoin isKindOfClass:[NSNull class]] || [totalCoin isEqualToString:@"(null)"]) {
+        totalCoin = @"0";
+    }
     NSString *hasStudyTime = dic[@"hasStudyTime"]?:@"0";
     // NSString *isSigned = dic[@"isSigned"];
     
@@ -55,7 +58,7 @@
     _titllLabel.text = [NSString stringWithFormat:@"%@",hasStudyTime];
     
     _punchCardLabel.text = [NSString stringWithFormat:@"%@\n累计打卡",signTotalCount?:@"0"];
-    _getNumberLabel.text = [NSString stringWithFormat:@"%@\n已获学豆",totalCoin?:@"0"];
+    _getNumberLabel.text = [NSString stringWithFormat:@"%@\n已获智慧豆",totalCoin?:@"0"];
     
     NSLog(@" num %f countnum %d 学习时长 %@",[hasStudyTime floatValue],[aimStudyTime intValue],_timeLabel.text?:@"0");
     

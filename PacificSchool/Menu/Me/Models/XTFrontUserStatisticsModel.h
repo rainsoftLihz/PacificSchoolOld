@@ -7,9 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
 @interface XTFrontUserStatisticsModel : NSObject
 @property (nonatomic,copy)NSString *coopCode;
 @property (nonatomic,copy)NSString *createTime;
@@ -26,4 +23,3 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *totalScore;
 @end
 
-NS_ASSUME_NONNULL_END

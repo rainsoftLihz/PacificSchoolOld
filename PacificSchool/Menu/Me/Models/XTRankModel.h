@@ -21,7 +21,7 @@
 //    workId = 1001;
 //};
 
-@class XTFrontUserStatisticsModel;
+#import "XTFrontUserStatisticsModel.h"
 @interface XTRankModel : NSObject
 
 @property (nonatomic,copy)NSString *coopCode;

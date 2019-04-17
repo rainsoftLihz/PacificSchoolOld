@@ -244,6 +244,36 @@
     
 }
 
++ (void)submitScroeSuccess:(NSDictionary *)param success:(void (^)(NSDictionary *result))success{
+    NSLog(@"parmas======%@",param);
+    [SVProgressHUD show];
+    [LTNetWorkManager post:kSubmitScore params:param success:^(NSDictionary *result) {
+       
+        if ([result[@"ret"] isEqualToString:@"0"]) {
+           success(result);
+        }
+        [SVProgressHUD dismiss];
+        
+    } failure:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+    }];
+}
+
++ (void)checkScroeSuccess:(NSDictionary *)param success:(void (^)(NSDictionary *result))success{
+    NSLog(@"parmas======%@",param);
+    [SVProgressHUD show];
+    [LTNetWorkManager post:kScoreDetail params:param success:^(NSDictionary *result) {
+        
+        if ([result[@"ret"] isEqualToString:@"0"]) {
+            success(result);
+        }
+        [SVProgressHUD dismiss];
+        
+    } failure:^(NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+    }];
+}
+
 + (void)getCourseDetailSuccess:(NSDictionary *)param success:(void (^)(XTCourseDetailModel *result))success {
     NSLog(@"parmas======%@",param);
     [SVProgressHUD show];

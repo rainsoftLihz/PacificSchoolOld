@@ -35,6 +35,8 @@
 @property(nonatomic,strong)UIImageView *imageView;
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)UILabel *detailLabel;
+
+@property (nonatomic,strong)NSString* score;
 @end
 
 @implementation XTCourseDetailViewController
@@ -75,7 +77,7 @@
 }
 
 -(void)pingFen{
-    self.pfView = [[XTPingfenView alloc] initWithFrame:self.view.window.bounds];
+    self.pfView = [[XTPingfenView alloc] initWithFrame:self.view.window.bounds andScore:self.score andMapId:self.mapId];
     [self.view.window addSubview:self.pfView];
 }
 

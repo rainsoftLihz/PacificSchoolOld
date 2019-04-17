@@ -27,4 +27,6 @@
 //  图片数量
 @property (assign, nonatomic) NSInteger imageCount;
 
+@property (assign, nonatomic) NSInteger scroe;
+
 @end
