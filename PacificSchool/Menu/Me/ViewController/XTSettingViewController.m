@@ -101,7 +101,7 @@
     
     [XTMainViewModel logout:^(NSDictionary * _Nonnull result) {
         
-         [kUserDefaults removeObjectForKey:kUserToken];
+        [kUserDefaults removeObjectForKey:kUserToken];
         [kUserDefaults setObject:@"N" forKey:kIsLogin];
         __weak AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appdelegate  switchRootViewController:NO];

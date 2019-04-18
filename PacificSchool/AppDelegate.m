@@ -130,6 +130,7 @@
 
 -(void)goToLogin{
     DEF_PERSISTENT_SET_OBJECT(@"N", kIsLogin);
+    DEF_PERSISTENT_SET_OBJECT(@"", kUserToken);
     [self switchRootViewController:YES];
     NSLog(@"Timer is DoingSth .........");
 }

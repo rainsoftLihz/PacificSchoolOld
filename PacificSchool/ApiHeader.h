@@ -31,7 +31,7 @@
  *
  *  @brief 公有云环境: 1
  */
-#define kAppIsPomesoft 0
+#define kAppIsPomesoft 1
 
 
 #if kAppIsProduction
@@ -39,7 +39,7 @@
    // 公网环境
    #if kAppIsPomesoft
 
-    #define kApi_base_url @"http://tapi.pomesoft.com/api/"
+    #define kApi_base_url @"https://tapi.pomesoft.com"
 
     #define kApi_FileServer_url @"http://fileserver.pomesoft.com"
 
@@ -104,7 +104,7 @@
 
 
 
-#define ApiWithFormat(api) [NSString stringWithFormat:@"%@%@",kApi_base_url,api]
+#define ApiWithFormat(api) [NSString stringWithFormat:@"%@%@",@"/api/",api]
 
 #define kApiLogin ApiWithFormat(@"login.action?m=loginByCPIC")
 

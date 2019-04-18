@@ -398,7 +398,7 @@
             success(result);
         }else {
             //[SVProgressHUD showErrorWithStatus:@"退出错误"];
-            success(result);
+            success(nil);
         }
 
         
