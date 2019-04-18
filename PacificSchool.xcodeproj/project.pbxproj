@@ -12,6 +12,9 @@
 		5329C10C2265B75600EC8ABE /* XTSignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10B2265B75600EC8ABE /* XTSignModel.m */; };
 		5329C10F2265D4F300EC8ABE /* XTPingfenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10E2265D4F300EC8ABE /* XTPingfenView.m */; };
 		5329C1172265DD3600EC8ABE /* PCStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C1162265DD3600EC8ABE /* PCStarRatingView.m */; };
+		5371D90022674EEA00706DB2 /* XTAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D8FF22674EEA00706DB2 /* XTAboutMeController.m */; };
+		5371D903226755DD00706DB2 /* XTAboutCPICViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D902226755DD00706DB2 /* XTAboutCPICViewController.m */; };
+		5371D9062267580E00706DB2 /* XTQRcodeVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D9052267580E00706DB2 /* XTQRcodeVController.m */; };
 		539013722264733600073F3B /* NSNumber+ToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 539013712264733600073F3B /* NSNumber+ToString.m */; };
 		539013A222648B0000073F3B /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5390137622648AFF00073F3B /* UIScrollView+MJRefresh.m */; };
 		539013A322648B0000073F3B /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 5390137722648AFF00073F3B /* MJRefreshConst.m */; };
@@ -269,6 +272,12 @@
 		5329C10E2265D4F300EC8ABE /* XTPingfenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTPingfenView.m; sourceTree = "<group>"; };
 		5329C1152265DD3500EC8ABE /* PCStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCStarRatingView.h; sourceTree = "<group>"; };
 		5329C1162265DD3600EC8ABE /* PCStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCStarRatingView.m; sourceTree = "<group>"; };
+		5371D8FE22674EEA00706DB2 /* XTAboutMeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTAboutMeController.h; sourceTree = "<group>"; };
+		5371D8FF22674EEA00706DB2 /* XTAboutMeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTAboutMeController.m; sourceTree = "<group>"; };
+		5371D901226755DD00706DB2 /* XTAboutCPICViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTAboutCPICViewController.h; sourceTree = "<group>"; };
+		5371D902226755DD00706DB2 /* XTAboutCPICViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTAboutCPICViewController.m; sourceTree = "<group>"; };
+		5371D9042267580E00706DB2 /* XTQRcodeVController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTQRcodeVController.h; sourceTree = "<group>"; };
+		5371D9052267580E00706DB2 /* XTQRcodeVController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTQRcodeVController.m; sourceTree = "<group>"; };
 		539013702264733600073F3B /* NSNumber+ToString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+ToString.h"; sourceTree = "<group>"; };
 		539013712264733600073F3B /* NSNumber+ToString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+ToString.m"; sourceTree = "<group>"; };
 		5390137622648AFF00073F3B /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
@@ -1293,6 +1302,12 @@
 				FB5B76FB223DEA97004EB6B4 /* XTHistoryViewController.h */,
 				FB5B76FC223DEA97004EB6B4 /* XTHistoryViewController.m */,
 				FB5B76FD223DEA97004EB6B4 /* XTHistoryViewController.xib */,
+				5371D8FE22674EEA00706DB2 /* XTAboutMeController.h */,
+				5371D8FF22674EEA00706DB2 /* XTAboutMeController.m */,
+				5371D901226755DD00706DB2 /* XTAboutCPICViewController.h */,
+				5371D902226755DD00706DB2 /* XTAboutCPICViewController.m */,
+				5371D9042267580E00706DB2 /* XTQRcodeVController.h */,
+				5371D9052267580E00706DB2 /* XTQRcodeVController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1950,6 +1965,7 @@
 				FB23922822490A70001ADD22 /* MJProperty.m in Sources */,
 				5329C1172265DD3600EC8ABE /* PCStarRatingView.m in Sources */,
 				FB23933122491135001ADD22 /* MASLayoutConstraint.m in Sources */,
+				5371D9062267580E00706DB2 /* XTQRcodeVController.m in Sources */,
 				FB3D6A54222EBFEB00C8D2AD /* LTTools.m in Sources */,
 				FB23922B22490A70001ADD22 /* NSObject+MJProperty.m in Sources */,
 				FB2392DD22491071001ADD22 /* FMDatabase.m in Sources */,
@@ -1957,6 +1973,7 @@
 				FB9CACDC2234CB6D0070E8D6 /* UIImageView+ZFCache.m in Sources */,
 				FBD00953222D7B6B0025C5E5 /* XTSettingViewController.m in Sources */,
 				FB2392CC22490E99001ADD22 /* SVIndefiniteAnimatedView.m in Sources */,
+				5371D90022674EEA00706DB2 /* XTAboutMeController.m in Sources */,
 				FB9CACE12234CB6D0070E8D6 /* ZFPlayerControlView.m in Sources */,
 				539013AE22648B0000073F3B /* MJRefreshStateHeader.m in Sources */,
 				539013AF22648B0000073F3B /* MJRefreshGifHeader.m in Sources */,
@@ -2028,6 +2045,7 @@
 				FB23922D22490A70001ADD22 /* NSString+MJExtension.m in Sources */,
 				FB2392B422490E00001ADD22 /* UIImage+GIF.m in Sources */,
 				FB0D2DC12253B30B00EF451C /* XTMeViewModel.m in Sources */,
+				5371D903226755DD00706DB2 /* XTAboutCPICViewController.m in Sources */,
 				5329C10C2265B75600EC8ABE /* XTSignModel.m in Sources */,
 				539013A722648B0000073F3B /* MJRefreshBackGifFooter.m in Sources */,
 				539013A522648B0000073F3B /* UIScrollView+MJExtension.m in Sources */,

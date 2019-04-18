@@ -37,6 +37,8 @@
 @property(nonatomic,strong)UILabel *detailLabel;
 
 @property (nonatomic,strong)NSString* score;
+
+@property (nonatomic,strong)NSString* scoreLab;
 @end
 
 @implementation XTCourseDetailViewController
@@ -49,6 +51,7 @@
     self.title = @"课程详情";
     self.navigationItem.rightBarButtonItem = [self setRightButtonItem];
     [self initData];
+    [self checkScored];
 }
 
 - (void)initData {
@@ -60,9 +63,21 @@
         [weakSelf initUI];
         [weakSelf.tableView reloadData];
     }];
-    
 }
 
+-(void)checkScored{
+    [XTMainViewModel checkScroeSuccess:@{@"mapId":self.mapId} success:^(NSDictionary * _Nonnull result) {
+        if (result) {
+            NSString* isScored = result[@"data"][@"isEvaluated"];
+            if ([isScored isEqualToString:@"Y"]) {
+                self.score = result[@"data"][@"score"];
+            }
+        }else {
+            self.score = nil;
+        }
+        
+    }];
+}
 
 - (UIBarButtonItem *)setRightButtonItem {
     
@@ -77,6 +92,23 @@
 }
 
 -(void)pingFen{
+    
+    WeakSelf
+    [XTMainViewModel checkScroeSuccess:@{@"mapId":self.mapId} success:^(NSDictionary * _Nonnull result) {
+        if (result) {
+            NSString* isScored = result[@"data"][@"isEvaluated"];
+            if ([isScored isEqualToString:@"Y"]) {
+                weakSelf.score = result[@"data"][@"score"];
+            }
+        }else {
+            weakSelf.score = nil;
+        }
+        [weakSelf addPfView];
+    }];
+    
+}
+
+-(void)addPfView{
     self.pfView = [[XTPingfenView alloc] initWithFrame:self.view.window.bounds andScore:self.score andMapId:self.mapId];
     [self.view.window addSubview:self.pfView];
 }
@@ -108,13 +140,13 @@
 
     [headView addSubview:self.titleLabel = titleLabel];
     
-    
     UILabel *scroeLabel = [UILabel new];
-    scroeLabel.text = [NSString stringWithFormat:@"   课程评分:%@",@"6.9"];
+    scroeLabel.text = [NSString stringWithFormat:@"  课程评分:%.1f",[self.model.elnMap.scoreAverage floatValue]];
     scroeLabel.font = [UIFont systemFontOfSize:15];
     scroeLabel.textColor = UIColor.darkGrayColor;
     scroeLabel.backgroundColor = [UIColor whiteColor];
     [headView addSubview:scroeLabel];
+    scroeLabel.textAlignment = NSTextAlignmentLeft;
     
     UILabel *detailLabel = [UILabel new];
     detailLabel.font = [UIFont systemFontOfSize:12];
@@ -147,16 +179,17 @@
     
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(imageView).offset(0);
-        make.right.equalTo(imageView).offset(0);
+        make.right.equalTo(scroeLabel.mas_left).offset(0);
         make.top.equalTo(imageView.mas_bottom);
         make.height.mas_equalTo(30);
     }];
     
     [scroeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(titleLabel).offset(0);
-        make.top.equalTo(titleLabel.mas_bottom);
-        make.right.mas_equalTo(headView);
-        make.height.mas_equalTo(scroceH);
+        //make.left.equalTo(titleLabel.mas_right).offset(0);
+        make.top.equalTo(titleLabel);
+        make.right.mas_equalTo(headView.mas_right).offset(-0.0);
+        make.centerY.mas_equalTo(titleLabel.mas_centerY);
+        make.width.mas_equalTo(112);
     }];
     
     

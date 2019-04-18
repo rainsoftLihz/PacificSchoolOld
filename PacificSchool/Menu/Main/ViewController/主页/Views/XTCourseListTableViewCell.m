@@ -8,7 +8,7 @@
 
 #import "XTCourseListTableViewCell.h"
 #import "XTCourseModel.h"
-
+#import "XTElnMapListModel.h"
 @implementation XTCourseListTableViewCell
 
 - (void)awakeFromNib {
@@ -16,11 +16,11 @@
     // Initialization code
 }
 
-- (void)loadModel:(XTCourseModel *)model {
+- (void)loadModel:(XTElnMapListModel *)model {
  
-    self.titleLabel.text = model.courseTitle;
-    self.subTitleLabel.text = [NSString stringWithFormat:@"%@",model.courseSummary];
-    self.numberLAbel.text = [NSString stringWithFormat:@"学习人数:%@",model.viewCount];
+    self.titleLabel.text = model.mapTitle;
+    self.subTitleLabel.text = [NSString stringWithFormat:@"%@",model.summary];
+    self.numberLAbel.text = [NSString stringWithFormat:@"评分:%.1f",model.scoreAverage.floatValue];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kApi_FileServer_url,model.coverImg]]];
     
 }

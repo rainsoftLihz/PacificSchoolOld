@@ -64,4 +64,6 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];       \
 #define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 #define kSafeArea (kDevice_Is_iPhoneX ? 34 : 0)
 
+
+
 #endif /* UserDefine_h */

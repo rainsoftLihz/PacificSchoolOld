@@ -191,15 +191,16 @@
     }];
 }
 
-+ (void)getHotSuccess:(void (^)(NSArray *result))success {
++ (void)getHot:(NSDictionary *)param Success:(void (^)(NSArray *result,NSInteger total))success {
     [SVProgressHUD show];
-    [LTNetWorkManager post:kGetHot params:nil success:^(NSDictionary *result) {
+    [LTNetWorkManager post:kGetHot params:param success:^(NSDictionary *result) {
         NSLog(@"热门 == %@",result);
         
         if ([[NSString stringWithFormat:@"%@",result[@"ret"]] isEqualToString:@"0"]) {
             NSArray *list = result[@"data"][@"list"];
-            NSArray *models = [XTCourseModel mj_objectArrayWithKeyValuesArray:list];
-            success(models);
+            NSArray *models = [XTElnMapListModel mj_objectArrayWithKeyValuesArray:list];
+            NSNumber* num = result[@"data"][@"total"];
+            success(models,num.integerValue);
         }
         [SVProgressHUD dismiss];
         
@@ -209,14 +210,15 @@
 
 }
 
-+ (void)getRecommendSuccess:(void (^)(NSArray *result))success {
++ (void)getRecommend:(NSDictionary *)param Success:(void (^)(NSArray *result,NSInteger total))success {
     [SVProgressHUD show];
-    [LTNetWorkManager post:kGetRecommend params:nil success:^(NSDictionary *result) {
+    [LTNetWorkManager post:kGetRecommend params:param success:^(NSDictionary *result) {
         NSLog(@"推荐%@",result);
         if ([result[@"ret"] isEqualToString:@"0"]) {
             NSArray *list = result[@"data"][@"list"];
-            NSArray *models = [XTCourseModel mj_objectArrayWithKeyValuesArray:list];
-            success(models);
+            NSArray *models = [XTElnMapListModel mj_objectArrayWithKeyValuesArray:list];
+            NSNumber* num = result[@"data"][@"total"];
+            success(models,num.integerValue);
         }
         [SVProgressHUD dismiss];
         
@@ -251,6 +253,8 @@
        
         if ([result[@"ret"] isEqualToString:@"0"]) {
            success(result);
+        }else {
+            success(nil);
         }
         [SVProgressHUD dismiss];
         
@@ -266,10 +270,13 @@
         
         if ([result[@"ret"] isEqualToString:@"0"]) {
             success(result);
+        }else {
+            success(nil);
         }
         [SVProgressHUD dismiss];
         
     } failure:^(NSString *msg) {
+        success(nil);
         [SVProgressHUD showErrorWithStatus:msg];
     }];
 }

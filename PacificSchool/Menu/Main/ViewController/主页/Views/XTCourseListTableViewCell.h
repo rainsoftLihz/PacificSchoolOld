@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class XTCourseModel;
+@class XTElnMapListModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XTCourseListTableViewCell : UITableViewCell
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLAbel;
-- (void)loadModel:(XTCourseModel *)model;
+- (void)loadModel:(XTElnMapListModel *)model;
 @end
 
 NS_ASSUME_NONNULL_END

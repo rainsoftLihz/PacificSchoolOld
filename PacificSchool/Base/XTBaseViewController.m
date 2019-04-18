@@ -67,7 +67,7 @@
 
 
 - (void)afterHide {
-    [SVProgressHUD setMaximumDismissTimeInterval:1];
+    [SVProgressHUD setMaximumDismissTimeInterval:2];
     
 }
 

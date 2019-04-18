@@ -108,7 +108,7 @@
 - (void)returnData:(NSMutableData *)data {
     
     NSString *dataString = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
-    NSLog(@" 录音数据 %@",dataString);
+    //NSLog(@" 录音数据 %@",dataString);
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         NSString *js = [NSString stringWithFormat:@"recordBufferCallbackIOS('%@')",dataString];

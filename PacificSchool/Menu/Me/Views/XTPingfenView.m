@@ -48,22 +48,16 @@
     self.starView.frame = CGRectMake(kScreenW/2.0-_starView.imageWidth * 5/2.0,  200/2.0-_starView.imageHeight/2.0,_starView.imageWidth * 5, _starView.imageHeight);
     
     
-    self.scoreLab = [[UILabel alloc] init];
-    self.scoreLab.textColor = [UIColor blackColor];
-    self.scoreLab.font = [UIFont boldSystemFontOfSize:18.0];
-    self.scoreLab.textAlignment = NSTextAlignmentCenter;
+    self.scoreLab = [self createLab:@"" alignment:NSTextAlignmentCenter font:[UIFont boldSystemFontOfSize:18.0]];
     [bkView addSubview:self.scoreLab];
     [self.scoreLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(bkView);
         make.bottom.mas_equalTo(self.starView.mas_top).offset(-5.0);
     }];
     
-    UIButton* submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [submitBtn setTitle:@"提交" forState:UIControlStateNormal];
+    UIButton* submitBtn = [self createBtn:@"提交" font:[UIFont boldSystemFontOfSize:17.0] sel:@selector(submit)];
     [submitBtn setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     submitBtn.backgroundColor = UIColor.greenColor;
-    submitBtn.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
-    [submitBtn addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
     [bkView addSubview:submitBtn];
     submitBtn.layer.masksToBounds = YES;
     submitBtn.layer.cornerRadius = 30.0/2;
@@ -78,21 +72,20 @@
     if (self.isScored) {
         self.scoreLab.text = [NSString stringWithFormat:@"我的评分:%@",self.score];
         self.starView.userInteractionEnabled = NO;
+    }else {
+        self.scoreLab.text = @"10分";
     }
     
     
-    UILabel* pLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-    pLab.text = @"评分";
-    pLab.textAlignment = NSTextAlignmentCenter;
-    pLab.textColor = [UIColor blackColor];
-    pLab.font = [UIFont boldSystemFontOfSize:16.0];
+    UILabel* pLab = [self createLab:@"评分" alignment:NSTextAlignmentCenter font:[UIFont boldSystemFontOfSize:16.0]];
     [bkView addSubview:pLab];
+    [pLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.mas_equalTo(bkView);
+        make.size.mas_equalTo(CGSizeMake(44.0, 44.0));
+    }];
     
-    UIButton* xBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [xBtn setTitle:@"取消" forState:UIControlStateNormal];
-    xBtn.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
-    [xBtn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-    [xBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+
+    UIButton* xBtn = [self createBtn:@"取消" font:[UIFont boldSystemFontOfSize:16.0] sel:@selector(cancel)];
     [bkView addSubview:xBtn];
     [xBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(pLab);
@@ -110,8 +103,13 @@
 -(void)submit{
     __weak typeof(self)weakSelf = self;
     [XTMainViewModel submitScroeSuccess:@{@"mapId":self.mapId,@"score":self.score} success:^(NSDictionary * _Nonnull result) {
-        [weakSelf cancel];
-        [SVProgressHUD showInfoWithStatus:@"评分成功"];
+        if (result) {
+            [weakSelf cancel];
+            [SVProgressHUD showWithStatus:@"评分成功"];
+        }else {
+            [SVProgressHUD showErrorWithStatus:@"评分失败"];
+        }
+        
     }];
 }
 
@@ -132,6 +130,26 @@
 - (void)mannerGrade:(NSString *)grade withView:(UIView *)starView{
     self.scoreLab.text = [NSString stringWithFormat:@"%@分",grade] ;
     self.score  = grade;
+}
+
+
+#pragma mark ----
+-(UIButton*)createBtn:(NSString*)title font:(UIFont*)font sel:(SEL)sel{
+    UIButton* xBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [xBtn setTitle:title forState:UIControlStateNormal];
+    xBtn.titleLabel.font = font;
+    [xBtn addTarget:self action:sel forControlEvents:UIControlEventTouchUpInside];
+    [xBtn setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    return xBtn;
+}
+
+-(UILabel*)createLab:(NSString*)title alignment:(NSTextAlignment)alig font:(UIFont*)font{
+    UILabel* pLab = [[UILabel alloc] init];
+    pLab.text = title;
+    pLab.textAlignment = alig;
+    pLab.textColor = [UIColor blackColor];
+    pLab.font = font;
+    return pLab;
 }
 
 

@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PacificSchool/Menu/Login/ViewController/XTLoginViewController.m"
-            timestampString = "577185286.715402"
+            filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Course-&#x8bfe;&#x7a0b;/XTSceneExerciseViewController.m"
+            timestampString = "577192474.273715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-loginRequest"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,29 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PacificSchool/Menu/Me/ViewController/XTHistoryViewController.m"
-            timestampString = "577108341.571363"
+            filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Course-&#x8bfe;&#x7a0b;/XTSceneExerciseViewController.m"
+            timestampString = "577192474.273846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "-initData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PacificSchool/Menu/Main/ViewController/&#x6253;&#x5361;/XTPunchCardViewController.m"
-            timestampString = "577185286.715952"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-initData"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

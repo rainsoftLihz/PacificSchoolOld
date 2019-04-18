@@ -7,7 +7,7 @@
 //
 
 #import "XTBaseViewController.h"
-
+#import "XTAboutMeController.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XTMeViewController : XTBaseViewController

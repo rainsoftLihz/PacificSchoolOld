@@ -31,7 +31,7 @@
  *
  *  @brief 公有云环境: 1
  */
-#define kAppIsPomesoft 1
+#define kAppIsPomesoft 0
 
 
 #if kAppIsProduction
@@ -114,10 +114,10 @@
 #define kGetMyMap ApiWithFormat(@"elnMap.action?m=getMyElnMap")
 
 //推荐课程
-#define kGetRecommend ApiWithFormat(@"elnCourse.action?m=getPageRecommend")
+#define kGetRecommend ApiWithFormat(@"elnMap.action?m=getPageRecommend")
 
 //热门课程
-#define kGetHot ApiWithFormat(@"elnCourse.action?m=getPageHot")
+#define kGetHot ApiWithFormat(@"elnMap.action?m=getPageHot")
 
 //已完成
 #define kGetComplete ApiWithFormat(@"elnMap.action?m=getMyElnMapComplete")

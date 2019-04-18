@@ -49,8 +49,8 @@
 
 - (void)initData {
     
-    self.models = @[@[@"智能测评"],@[@"通关考历史记录",@"已完成的课程"],@[@"我的积分",@"消息中心"],@[@"关于智学院"]];
-    self.images = @[@[@"intelligence_testing"],@[@"examination_record",@"complete_course"],@[@"integral",@"msg_center"],@[@"test_Histroy"]];
+    self.models = @[@[@"智能测评"],@[@"通关考历史记录",@"已完成的课程"],@[/*@"我的积分",*/@"消息中心"],@[@"关于智学院"]];
+    self.images = @[@[@"intelligence_testing"],@[@"examination_record",@"complete_course"],@[/*@"integral",*/@"msg_center"],@[@"test_Histroy"]];
     self.titles = [NSMutableArray array];
     self.socres = [NSMutableArray array];
     
@@ -86,7 +86,9 @@
         
         __weakSelf.rankNo = rankNo.integerValue;
         
-        __weakSelf.headView.scoreLabel.text = rankScore;
+        __weakSelf.headView.scoreLabel.text = [NSString stringWithFormat:@"%.2f",rankScore.floatValue] ;
+        
+        
         NSLog(@" === %@ === %@",[rankNo class],rankScore);
         
         if ([rankNoPre intValue] > [rankNo intValue]) {
@@ -261,12 +263,13 @@
     
     if (indexPath.section == 1 && indexPath.row == 1) {
         XTCompleteCourseViewController *vc = [XTCompleteCourseViewController new];
-        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.section == 1 && indexPath.row == 0){
         
         XTHistoryViewController *vc = [XTHistoryViewController new];
-        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.section == 3 && indexPath.row == 0){
+        XTAboutMeController* vc = [XTAboutMeController new];
         [self.navigationController pushViewController:vc animated:YES];
     }
     

@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "XTElnMapUserModel.h"
 NS_ASSUME_NONNULL_BEGIN
-@class XTElnMapUserModel;
+
 @interface XTMyCourseModel : NSObject
 //belongId":"",
 //"belongType":"org",
@@ -51,6 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy)NSString *summary;
 @property (nonatomic,copy)NSString *jobCountComplete;
 @property (nonatomic,copy)NSString *jobCountTotal;
+@property (nonatomic,copy)NSString *scoreAverage;
 @end;
 
 NS_ASSUME_NONNULL_END

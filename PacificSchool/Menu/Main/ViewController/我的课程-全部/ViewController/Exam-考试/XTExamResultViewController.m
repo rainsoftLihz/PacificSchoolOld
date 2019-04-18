@@ -34,7 +34,7 @@
     
     [SVProgressHUD show];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self getExamResult];
     });
     
@@ -76,6 +76,7 @@
                             @"objectType":@"aiExam"
                             };
     NSLog(@"考试结果参数名 %@",param);
+    
     WeakSelf
     [XTMainViewModel getExamDetailSuccess:param success:^(NSDictionary * _Nonnull result) {
        weakSelf.model = [XTAiExamUserDetailModel mj_objectWithKeyValues:result];

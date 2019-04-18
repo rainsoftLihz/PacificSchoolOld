@@ -211,6 +211,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 
 + (void)showWithStatus:(NSString*)status {
     [self showProgress:SVProgressHUDUndefinedProgress status:status];
+    [self dismissWithDelay:2.0];
 }
 
 + (void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType {

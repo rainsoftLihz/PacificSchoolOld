@@ -20,7 +20,8 @@
     UITableViewDataSource
 >
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong)NSArray *models;
+@property (nonatomic,strong)NSMutableArray *modelArr;
+@property (nonatomic,assign)NSInteger page;
 @end
 
 @implementation XTHotCourseViewController
@@ -28,22 +29,60 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self initData];
+    self.page =  1;
+    [self loadData];
     [self initUI];
 }
-- (void)initData {
+
+-(void)loadMore{
+    self.page++;
+    [self loadData];
+}
+
+- (void)loadData {
     
     WeakSelf
     if (self.courseType == XTHotCourseType) {
         
-        [XTMainViewModel getHotSuccess:^(NSArray * _Nonnull result) {
-            weakSelf.models = result;
+        [XTMainViewModel getHot:@{@"page":@(self.page)} Success:^(NSArray * _Nonnull result,NSInteger total) {
+            
+            [weakSelf.tableView.mj_footer endRefreshing];
+            
+            if (weakSelf.page == 1) {
+                weakSelf.modelArr = result.mutableCopy;
+            }else{
+                [weakSelf.modelArr addObjectsFromArray:result];
+                if (weakSelf.page == 10) {
+                    [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+                }
+            }
+            
+            if (weakSelf.page >= total) {
+                //没有数据了
+                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
             [weakSelf.tableView reloadData];
         }];
         
     }else {
-        [XTMainViewModel getRecommendSuccess:^(NSArray * _Nonnull result) {
-            weakSelf.models = result;
+        [XTMainViewModel getRecommend:@{@"page":@(self.page)} Success:^(NSArray * _Nonnull result,NSInteger total) {
+            [weakSelf.tableView.mj_footer endRefreshing];
+            
+            if (weakSelf.page == 1) {
+                weakSelf.modelArr = result.mutableCopy;
+            }else{
+                [weakSelf.modelArr addObjectsFromArray:result];
+                if (weakSelf.page == 10) {
+                    [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+                }
+            }
+            
+            if (weakSelf.page >= total) {
+                //没有数据了
+                [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
             [weakSelf.tableView reloadData];
 
         }];
@@ -56,30 +95,32 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"XTCourseListTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     self.tableView.rowHeight = 70;
     self.tableView.tableFooterView = [UIView new];
+    self.tableView.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.models.count;
+    return self.modelArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     XTCourseListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    [cell loadModel:self.models[indexPath.row]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell loadModel:self.modelArr[indexPath.row]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    XTCourseDetailViewController *vc = [XTCourseDetailViewController new];
-    XTCourseModel *model =self.models[indexPath.row];
-//    vc.mapId = model.courseId;
-//    [self.navigationController pushViewController:vc animated:YES];
-    XTCoursewareViewController *vc = [XTCoursewareViewController new];
-    XTElnMapJobListModel *submodel = [XTElnMapJobListModel new];
-    submodel.objectId = model.courseId;
-    vc.mapModel = submodel;
+    XTCourseDetailViewController *vc = [XTCourseDetailViewController new];
+    XTElnMapListModel *model =self.modelArr[indexPath.row];
+    vc.mapId = model.mapId;
     [self.navigationController pushViewController:vc animated:YES];
+//    XTCoursewareViewController *vc = [XTCoursewareViewController new];
+//    XTElnMapJobListModel *submodel = [XTElnMapJobListModel new];
+//    submodel.objectId = model.mapId;
+//    vc.mapModel = submodel;
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XTElnMapListModel.h"
+#import "XTCourseDetailModel.h"
+#import "XTCoursewareDetailModel.h"
 
-@class XTCourseDetailModel,XTCoursewareDetailModel;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XTMainViewModel : NSObject
@@ -17,9 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)getMtMapDataSuccess:(void (^)(NSArray *result))success;
 
-+ (void)getHotSuccess:(void (^)(NSArray *result))success;
++ (void)getHot:(NSDictionary *)param Success:(void (^)(NSArray *result,NSInteger total))success;
 
-+ (void)getRecommendSuccess:(void (^)(NSArray *result))success;
++ (void)getRecommend:(NSDictionary *)param Success:(void (^)(NSArray *result,NSInteger total))success;
 
 + (void)getCourseCompleteSuccess:(void (^)(NSArray *result))success;
 
@@ -58,6 +60,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)getSaveSign:(void (^)(NSDictionary *result))success;
 
 + (void)submitScroeSuccess:(NSDictionary *)param success:(void (^)(NSDictionary *result))success;
+
++ (void)checkScroeSuccess:(NSDictionary *)param success:(void (^)(NSDictionary *result))success;
 @end
 
 NS_ASSUME_NONNULL_END

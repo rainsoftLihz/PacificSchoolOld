@@ -29,10 +29,15 @@
     // Do any additional setup after loading the view from its nib.
     self.page = 1;
     [self initUI];
-    [self initData];
+    [self loadData];
 }
 
-- (void)initData {
+-(void)loadMore{
+    self.page++;
+    [self loadData];
+}
+
+- (void)loadData {
     WeakSelf
     [XTMainViewModel getHistory:@{@"pageNo":@(self.page)} sucess:^(NSArray * _Nonnull result, NSInteger total) {
         if (self.page == 1) {
@@ -41,11 +46,10 @@
             [weakSelf.modelArr addObjectsFromArray:result];
         }
         
+        [weakSelf.tableView.mj_footer endRefreshing];
         if (weakSelf.page >= total) {
             //没有数据了
             [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
-        }else{
-            [weakSelf.tableView.mj_footer endRefreshing];
         }
         
         [weakSelf.tableView reloadData];
@@ -62,6 +66,8 @@
  
     self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = 100;
+    
+    self.tableView.mj_footer = [MJRefreshAutoStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -69,14 +75,11 @@
     return self.modelArr.count;
 }
 
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     XTHistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     [cell loadModel:self.modelArr[indexPath.row]];
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
