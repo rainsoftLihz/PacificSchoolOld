@@ -38,11 +38,11 @@
     
     [SVProgressHUD show];
     // 1.创建请求管理者
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manger = [[AFHTTPSessionManager manager] initWithBaseURL:[NSURL URLWithString:kApi_base_url]];
     manger.responseSerializer = [AFJSONResponseSerializer serializer];
     manger.requestSerializer.timeoutInterval = 30.f;
     manger.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/json",@"application/json",@"text/javascript",@"text/html",@"text/xml", nil];
-    
+    //manger.securityPolicy = [self customSecurityPolicy];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     // 打印请求Api
     //[LTNetWorkManager jointParameter:[self getOldParamsFromParams:params] url:url];
@@ -65,7 +65,7 @@
 + (void)post:(NSString *)url params:(NSDictionary *)params success:(void (^)(NSDictionary *result))success failure:(void (^)(NSString *msg))failure {
     
     // 1.创建请求管理者
-    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manger = [[AFHTTPSessionManager manager] initWithBaseURL:[NSURL URLWithString:kApi_base_url]];
     manger.responseSerializer = [AFJSONResponseSerializer serializer];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     manger.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/json",@"application/json",@"text/javascript",@"text/html",@"text/xml", nil];
@@ -73,6 +73,10 @@
 //    manger.requestSerializer.HTTPShouldHandleCookies = NO;
     [LTNetWorkManager jointParameter:[self getOldParamsFromParams:params] url:url];
     
+
+    //manger.securityPolicy = [self customSecurityPolicy];
+    
+
     [manger POST:url parameters:[self getOldParamsFromParams:params] progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -95,6 +99,21 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         failure(@"网络错误");
     }];
+}
+
+
++ (AFSecurityPolicy*)customSecurityPolicy
+{
+    //证书的路径
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"ssl" ofType:@"cer"];
+    NSData *certData = [NSData dataWithContentsOfFile:cerPath];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    securityPolicy.allowInvalidCertificates = YES;
+    securityPolicy.validatesDomainName = NO;
+    if (certData) {
+        securityPolicy.pinnedCertificates = [NSSet setWithObject:certData];
+    }
+    return securityPolicy;
 }
 
 + (void)uploadImageURL:(NSString *)url param:(NSDictionary *)param images:(UIImage *)image success:(void (^)(NSDictionary *result))success failure:(void (^)(NSString *msg))failure {

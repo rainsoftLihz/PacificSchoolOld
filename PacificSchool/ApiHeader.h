@@ -31,7 +31,7 @@
  *
  *  @brief 公有云环境: 1
  */
-#define kAppIsPomesoft 1
+#define kAppIsPomesoft 0
 
 
 #if kAppIsProduction
@@ -40,6 +40,8 @@
    #if kAppIsPomesoft
 
     #define kApi_base_url @"https://tapi.pomesoft.com"
+
+    #define kApi_base_Add @"/api/"
 
     #define kApi_FileServer_url @"http://fileserver.pomesoft.com"
 
@@ -55,7 +57,9 @@
 
   #else
     // sit环境
-    #define kApi_base_url @"http://zhxy-ft.cpic.com.cn/elnApi/api/"
+    #define kApi_base_url @"https://zhxy-ft.cpic.com.cn"
+
+    #define kApi_base_Add @"/elnApi/api/"
 
     #define kApi_FileServer_url @"http://zhxy-ft.cpic.com.cn/elnFile"
 
@@ -83,6 +87,8 @@
     // 基地址
     #define kApi_base_url @"https://aitraining.cpic.com.cn/elnApi/api/"
 
+    #define kApi_base_Add @"/elnApi/api/"
+
     //文件基地址
     #define kApi_FileServer_url @"http://aitraining.cpic.com.cn/elnFile"
 
@@ -104,7 +110,7 @@
 
 
 
-#define ApiWithFormat(api) [NSString stringWithFormat:@"%@%@",@"/api/",api]
+#define ApiWithFormat(api) [NSString stringWithFormat:@"%@%@",kApi_base_Add,api]
 
 #define kApiLogin ApiWithFormat(@"login.action?m=loginByCPIC")
 

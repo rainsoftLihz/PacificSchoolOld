@@ -34,10 +34,10 @@
     
     [SVProgressHUD show];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self getExamResult];
-    });
-    
+    //});
+
     [self initData];
     [self initUI];
 }
@@ -82,19 +82,21 @@
        weakSelf.model = [XTAiExamUserDetailModel mj_objectWithKeyValues:result];
         NSLog(@"考试结果 %@",result);
         NSArray *resultAry = result[@"data"][@"evaluateUserCategoryList"];
-        if (resultAry.count == 0) {
+        if (!weakSelf.model.detailId) {
              weakSelf.requestNumber = weakSelf.requestNumber + 1;
 //            if (weakSelf.requestNumber < 3) {
 //                NSLog(@"考试结果次数 %d",weakSelf.requestNumber);
 //
-//                [weakSelf getExamResult];
+                [weakSelf getExamResult];
 //            }
             
+        }else {
+            [weakSelf configRadarMap:weakSelf.model];
         }
-        [weakSelf configRadarMap:weakSelf.model];
+        
     }];
-    
 }
+
 
 - (void)configRadarMap:(XTAiExamUserDetailModel *)result {
     

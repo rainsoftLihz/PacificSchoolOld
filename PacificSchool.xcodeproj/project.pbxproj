@@ -12,6 +12,7 @@
 		5329C10C2265B75600EC8ABE /* XTSignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10B2265B75600EC8ABE /* XTSignModel.m */; };
 		5329C10F2265D4F300EC8ABE /* XTPingfenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10E2265D4F300EC8ABE /* XTPingfenView.m */; };
 		5329C1172265DD3600EC8ABE /* PCStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C1162265DD3600EC8ABE /* PCStarRatingView.m */; };
+		532A8FD322687FAB00596E5C /* ssl.cer in Resources */ = {isa = PBXBuildFile; fileRef = 532A8FD222687FAB00596E5C /* ssl.cer */; };
 		5371D90022674EEA00706DB2 /* XTAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D8FF22674EEA00706DB2 /* XTAboutMeController.m */; };
 		5371D903226755DD00706DB2 /* XTAboutCPICViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D902226755DD00706DB2 /* XTAboutCPICViewController.m */; };
 		5371D9062267580E00706DB2 /* XTQRcodeVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D9052267580E00706DB2 /* XTQRcodeVController.m */; };
@@ -272,6 +273,7 @@
 		5329C10E2265D4F300EC8ABE /* XTPingfenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTPingfenView.m; sourceTree = "<group>"; };
 		5329C1152265DD3500EC8ABE /* PCStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCStarRatingView.h; sourceTree = "<group>"; };
 		5329C1162265DD3600EC8ABE /* PCStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCStarRatingView.m; sourceTree = "<group>"; };
+		532A8FD222687FAB00596E5C /* ssl.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = ssl.cer; sourceTree = "<group>"; };
 		5371D8FE22674EEA00706DB2 /* XTAboutMeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTAboutMeController.h; sourceTree = "<group>"; };
 		5371D8FF22674EEA00706DB2 /* XTAboutMeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTAboutMeController.m; sourceTree = "<group>"; };
 		5371D901226755DD00706DB2 /* XTAboutCPICViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTAboutCPICViewController.h; sourceTree = "<group>"; };
@@ -1523,6 +1525,7 @@
 		FB4CA2DA21EF31250035347F /* PacificSchool */ = {
 			isa = PBXGroup;
 			children = (
+				532A8FD222687FAB00596E5C /* ssl.cer */,
 				5390136F226472DD00073F3B /* Catgary */,
 				FB4CA2DB21EF31250035347F /* AppDelegate.h */,
 				FB4CA2DC21EF31250035347F /* AppDelegate.m */,
@@ -1902,6 +1905,7 @@
 				FB4CA2E821EF31260035347F /* LaunchScreen.storyboard in Resources */,
 				FB9CACDF2234CB6D0070E8D6 /* ZFPlayer.bundle in Resources */,
 				FB9CAD1F2234F2180070E8D6 /* XTCoursewareViewController.xib in Resources */,
+				532A8FD322687FAB00596E5C /* ssl.cer in Resources */,
 				FB18A34C2232C092001496CB /* XTHotCourseViewController.xib in Resources */,
 				FB25D87A22394D630067E518 /* XTCustomsPassViewController.xib in Resources */,
 				FB175281223AAFD9000EC109 /* cuo@2x.png in Resources */,

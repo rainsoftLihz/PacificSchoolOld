@@ -14,7 +14,6 @@
             <connections>
                 <outlet property="closeBtn" destination="L0N-YW-nWw" id="xbi-br-GGQ"/>
                 <outlet property="headView" destination="wig-Wq-3BY" id="m4t-5X-SYy"/>
-                <outlet property="rankLabel" destination="qOH-EC-eGK" id="OhL-jl-j8U"/>
                 <outlet property="resultLabel" destination="ICd-Qs-LHT" id="w7K-9e-JcZ"/>
                 <outlet property="scoreLabel" destination="0cw-iP-e8k" id="Hjh-Ia-o7C"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -85,36 +84,6 @@
                         <constraint firstItem="ICd-Qs-LHT" firstAttribute="leading" secondItem="OZJ-ax-KFB" secondAttribute="trailing" id="vSw-dx-6Gy"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="619-m8-esb">
-                    <rect key="frame" x="0.0" y="370" width="375" height="40"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前全公司排名:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETh-59-uRb">
-                            <rect key="frame" x="8" y="0.0" width="179.5" height="40"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOH-EC-eGK">
-                            <rect key="frame" x="187.5" y="0.0" width="179.5" height="40"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="9Zc-Up-1B1"/>
-                        <constraint firstItem="ETh-59-uRb" firstAttribute="leading" secondItem="619-m8-esb" secondAttribute="leading" constant="8" id="GcJ-t7-ZLw"/>
-                        <constraint firstItem="qOH-EC-eGK" firstAttribute="top" secondItem="619-m8-esb" secondAttribute="top" id="IsU-he-Zhy"/>
-                        <constraint firstAttribute="bottom" secondItem="ETh-59-uRb" secondAttribute="bottom" id="OeC-fz-1og"/>
-                        <constraint firstItem="qOH-EC-eGK" firstAttribute="leading" secondItem="ETh-59-uRb" secondAttribute="trailing" id="Og1-BD-RQm"/>
-                        <constraint firstAttribute="bottom" secondItem="qOH-EC-eGK" secondAttribute="bottom" id="TJo-ye-nZK"/>
-                        <constraint firstItem="qOH-EC-eGK" firstAttribute="width" secondItem="ETh-59-uRb" secondAttribute="width" id="TVz-i5-bNy"/>
-                        <constraint firstItem="qOH-EC-eGK" firstAttribute="height" secondItem="ETh-59-uRb" secondAttribute="height" id="TsO-Eo-vbI"/>
-                        <constraint firstItem="ETh-59-uRb" firstAttribute="top" secondItem="619-m8-esb" secondAttribute="top" id="Wdm-Cd-azU"/>
-                        <constraint firstAttribute="trailing" secondItem="qOH-EC-eGK" secondAttribute="trailing" constant="8" id="dbe-7V-hSl"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0N-YW-nWw">
                     <rect key="frame" x="20" y="627" width="335" height="30"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -160,7 +129,6 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="619-m8-esb" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="1Ta-mU-ewm"/>
                 <constraint firstItem="wig-Wq-3BY" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="2ps-lu-PH6"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="L0N-YW-nWw" secondAttribute="trailing" constant="20" id="AR1-E1-TbP"/>
                 <constraint firstItem="L0N-YW-nWw" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="CUq-9O-4y7"/>
@@ -170,10 +138,8 @@
                 <constraint firstItem="U3z-VN-aOf" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="Q2l-eD-iIP"/>
                 <constraint firstItem="uWv-Vn-UQ5" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="SWv-Qy-OWD"/>
                 <constraint firstItem="uWv-Vn-UQ5" firstAttribute="top" secondItem="U3z-VN-aOf" secondAttribute="bottom" constant="8" id="YL5-8S-Ebo"/>
-                <constraint firstItem="619-m8-esb" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="mS3-45-CLX"/>
                 <constraint firstItem="U3z-VN-aOf" firstAttribute="top" secondItem="wig-Wq-3BY" secondAttribute="bottom" id="pDf-sv-qaO"/>
                 <constraint firstItem="uWv-Vn-UQ5" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="tMI-W6-CWY"/>
-                <constraint firstItem="619-m8-esb" firstAttribute="top" secondItem="uWv-Vn-UQ5" secondAttribute="bottom" constant="8" id="x63-8F-Cgm"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="U3z-VN-aOf" secondAttribute="trailing" id="zUr-Cs-Cxm"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
@@ -181,6 +147,6 @@
         </view>
     </objects>
     <resources>
-        <image name="resultExamBG" width="536" height="325"/>
+        <image name="resultExamBG" width="1072" height="650"/>
     </resources>
 </document>

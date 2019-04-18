@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AQCapture : NSObject
 
-@property (nonatomic,strong) id<AQCaptureDelegate>delegate;
+@property (nonatomic,weak) id<AQCaptureDelegate>delegate;
 @property (nonatomic,assign)UInt32  bitsPerChannel;
 @property (nonatomic,assign)UInt32  bytesPerPacket;
 @property (nonatomic,assign)UInt32  sampleRateKey;

@@ -46,8 +46,6 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     formatter.dateFormat = @"yyyy-MM-dd";
     NSString *currentDateString = [formatter stringFromDate:date];
-    //NSLog(@"currentDateStringr day %@",currentDateString);
-
     return currentDateString;
     
 }
@@ -137,9 +135,7 @@
     NSDate * mydate = [NSDate date];
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    //NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
-    //NSLog(@"当前的时间的字符串 =%@",currentDateStr);
-    
+
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *comps = nil;
     comps = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitMonth fromDate:mydate];
