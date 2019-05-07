@@ -120,17 +120,17 @@
     NSLog(@" 声纹核身分数 == %f",[resultdic[@"score"] floatValue]);
     
     // 结果评估
-    if (score >= (80) && score <= (90)) {
+    if (score >= (80) && score < (90)) {
         
         // 大于 80 小于 90
         self.resultLabel.text = @"良好";
         
-    }else if (score > (60) && score < (80) ){
+    }else if (score >= (60) && score < (80) ){
         
         // 大于 60 小于 80
         self.resultLabel.text = @"合格";
         
-    }else if (score >= 0 && score < (60) ){
+    }else if ( score < (60) ){
         
         // 大于 0 小于 60
         self.resultLabel.text = @"不合格";
@@ -154,7 +154,7 @@
         float getScore = [dic[@"categoryGetScore"] floatValue];
         
         float userscore = getScore/totalScore *100;
-        NSString *scoreS = [NSString stringWithFormat:@"%.2f",userscore];
+        NSString *scoreS = [NSString removeSuffix:[NSString stringWithFormat:@"%.1f",userscore]] ;
         NSLog(@"userscore %@",scoreS);
 
         [self.titles addObject:title];

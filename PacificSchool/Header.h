@@ -8,7 +8,7 @@
 
 #ifndef Header_h
 #define Header_h
-
+#import "YYModel.h"
 #import "UserDefine.h"
 #import "Masonry.h"
 #import "XTGradientLayer.h"
@@ -21,6 +21,6 @@
 #import "XTBaseViewController.h"
 #import "NSNumber+ToString.h"
 #import "MJRefresh.h"
-
+#import "Definition.h"
 #import "NSString+Tool.h"
 #endif /* Header_h */

@@ -42,7 +42,7 @@
     NSLog(@"完成度%f model %f %f",complete,total,complete / total);
     
     // 平均分
-    NSString *coSour = [NSString stringWithFormat:@"%.1f%%",pr*100];
+    NSString *coSour = [NSString removeSuffix:[NSString stringWithFormat:@"%.1f%%",pr*100]] ;
     self.subLabel.text = [NSString stringWithFormat:@"已完成%@ 平均分%.1f",coSour,[model.elnMapUser.avgScore floatValue]];
     
 }

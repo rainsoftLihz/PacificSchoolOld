@@ -19,22 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PacificSchool/AppDelegate.m"
-            timestampString = "577283315.978896"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-applicationDidEnterBackground:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Course-&#x8bfe;&#x7a0b;/XTSceneExerciseViewController.m"
             timestampString = "577283315.979277"
             startingColumnNumber = "9223372036854775807"
@@ -68,7 +52,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Exam-&#x8003;&#x8bd5;/XTExamResultViewController.m"
-            timestampString = "577283315.979708"
+            timestampString = "578801031.181078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -96,27 +80,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Course-&#x8bfe;&#x7a0b;/XTSceneExerciseViewController.m"
-            timestampString = "577283315.98009"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PacificSchool/Base/Tools/LTNetWorkManager.m"
-            timestampString = "577283315.9801691"
+            timestampString = "577420235.196823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -132,12 +100,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Exam-&#x8003;&#x8bd5;/XTExamResultViewController.m"
-            timestampString = "577283315.98051"
+            timestampString = "578801031.183526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
             landmarkName = "-getExamResult"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PacificSchool/Menu/Me/ViewController/XTSettingViewController.m"
+            timestampString = "577420896.3656009"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PacificSchool/Menu/Me/ViewController/XTRankViewController.m"
+            timestampString = "577867816.972584"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-loadData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PacificSchool/Menu/Main/ViewModel/XTMainViewModel.m"
+            timestampString = "577705484.961736"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
+            landmarkName = "+getRank:Success:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Courseware-&#x8bfe;&#x4ef6;&#x67e5;&#x770b;/XTHTMLViewController.m"
+            timestampString = "577868088.646021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-beginSaveLearnTracking"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Exam-&#x8003;&#x8bd5;/Manager/XTRecognitionManager.m"
+            timestampString = "578910099.2384011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-startRecording"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -75,6 +75,10 @@
     [SVProgressHUD dismiss];
 }
 
+-(void)dealloc {
+    NSLog(@"dealloc ===>>>%@",self);
+}
+
 /*
 #pragma mark - Navigation
 

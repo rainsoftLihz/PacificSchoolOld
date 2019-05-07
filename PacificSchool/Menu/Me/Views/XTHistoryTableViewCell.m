@@ -26,13 +26,13 @@
 
     self.nameLabel.text = model.examTitle;
     
-    NSMutableAttributedString *allString = [[NSMutableAttributedString alloc]initWithString:@"平均分:"];
+    NSMutableAttributedString *allString = [[NSMutableAttributedString alloc]initWithString:@"得分:"];
     NSAttributedString *subString = [[NSAttributedString alloc]initWithString:model.score attributes:@{NSForegroundColorAttributeName:[UIColor redColor],NSFontAttributeName:[UIFont systemFontOfSize:15]}];
     [allString appendAttributedString:subString];
     self.scoreLabel.attributedText = allString;
-    self.rank.text = [NSString stringWithFormat:@"全公司排名:%@",model.rankNo];
+    //self.rank.text = [NSString stringWithFormat:@"全公司排名:%@",model.rankNo];
     
-    self.timeLabel.text = [LSDateTool ymdhm_dateConvrrtTimestamp:[model.createTime integerValue]];
+    //self.timeLabel.text = [LSDateTool ymdhm_dateConvrrtTimestamp:[model.createTime integerValue]];
     
     [LSDateTool dateConvrrtTimestamp:[model.createTime integerValue]/1000];
     

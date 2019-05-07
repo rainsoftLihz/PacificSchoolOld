@@ -251,15 +251,16 @@ UITableViewDataSource
     
     XTSwitchView *view = [[XTSwitchView alloc]initWithFrame:CGRectMake(0, kCountHeight + 8, kScreenW, 35)];
     view.backgroundColor = [UIColor whiteColor];
+    WeakSelf
     view.blockEvent = ^(NSInteger index) {
         if (index == 0) {
-            self.tableView.hidden = YES;
-            self.informationView.hidden = NO;
-            self.commentView.hidden = YES;
+            weakSelf.tableView.hidden = YES;
+            weakSelf.informationView.hidden = NO;
+            weakSelf.commentView.hidden = YES;
         }else {
-            self.tableView.hidden = NO;
-            self.informationView.hidden = YES;
-            self.commentView.hidden = NO;
+            weakSelf.tableView.hidden = NO;
+            weakSelf.informationView.hidden = YES;
+            weakSelf.commentView.hidden = NO;
         }
     };
     [_scorView addSubview:view];
@@ -436,8 +437,7 @@ UITableViewDataSource
     [self.playerView destroyPlayerItem];
     self.playerView = nil;
     
-    
-    
+    NSLog(@"dealloc === >>> %@",self);
 }
 /*
  #pragma mark - Navigation

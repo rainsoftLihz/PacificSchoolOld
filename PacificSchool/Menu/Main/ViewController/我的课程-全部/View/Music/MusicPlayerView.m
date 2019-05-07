@@ -48,6 +48,7 @@
     [self destroyPlayer];
     [self removeObserver:self forKeyPath:@"playerStatus"];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    NSLog(@"dealloc ===>>>%@",self);
 }
 
 #pragma mark 初始化组件\初始化playerListener

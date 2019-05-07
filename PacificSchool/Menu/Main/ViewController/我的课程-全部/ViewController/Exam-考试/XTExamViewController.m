@@ -62,13 +62,13 @@
         examView.model = submodel;
         examView.frame = CGRectMake(i*kScreenW, 0, kScreenW, kScreenH-64);
         [_scorllView addSubview:examView];
-        
+        __weak typeof(self)wkSelf = self;
         examView.block = ^(NSInteger index) {
-            if (index == self.model.examItemList.count) {
-                [self commitAnswer];
+            if (index == wkSelf.model.examItemList.count) {
+                [wkSelf commitAnswer];
             }else {
-                [self.scorllView setContentOffset:CGPointMake((index) * kScreenW,0) animated:YES];
-                NSLog(@"位置2 %@",NSStringFromCGRect(self.scorllView.frame));
+                [wkSelf.scorllView setContentOffset:CGPointMake((index) * kScreenW,0) animated:YES];
+                NSLog(@"位置2 %@",NSStringFromCGRect(wkSelf.scorllView.frame));
             }
 
         };
@@ -115,6 +115,7 @@
     
     [UIApplication sharedApplication].idleTimerDisabled = NO;
 
+    NSLog(@"dealloc ==--->%@",self);
     
 }
 

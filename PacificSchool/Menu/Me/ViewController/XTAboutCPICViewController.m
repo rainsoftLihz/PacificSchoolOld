@@ -17,9 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UITextView* text = [[UITextView alloc] initWithFrame:self.view.bounds];
+    CGFloat navigationBarAndStatusBarHeight = self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height;
+    UITextView* text = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, kScreenW, kScreenH-navigationBarAndStatusBarHeight)];
     text.backgroundColor = UIColor.whiteColor;
     text.editable = NO;
+    text.scrollEnabled = YES;
     [self.view addSubview:text];
     self.title = @"关于智学院";
     text.font = [UIFont systemFontOfSize:14.0];

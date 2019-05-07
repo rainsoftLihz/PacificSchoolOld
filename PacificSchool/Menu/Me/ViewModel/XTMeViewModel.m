@@ -20,7 +20,7 @@
     NSDictionary *param = @{@"frontUserId":frontUserId,@"coopCode":coopcode,@"accessToken":token};
     NSLog(@" 上传参数 %@",param);
 
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager manager] initWithBaseURL:[NSURL URLWithString:kApi_base_url]];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/json",@"application/json",@"text/javascript",@"text/html",@"text/xml", nil];
 
     [manager POST:kFrontUserHeadimgurl parameters:param constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {

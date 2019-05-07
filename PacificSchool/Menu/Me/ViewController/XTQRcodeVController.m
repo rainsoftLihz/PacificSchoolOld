@@ -18,9 +18,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"APP下载二维码";
-    UIImageView* imgv = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    UIImageView* imgv = [[UIImageView alloc] init];
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:imgv];
-    imgv.image = [UIImage imageNamed:@"launch"];
+    
+    CGFloat  imgSize = 180;
+    imgv.image = [UIImage imageNamed:@"WechatIMG87"];
+    [imgv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view).offset(44);
+        make.size.mas_equalTo(CGSizeMake(imgSize, imgSize));
+        
+    }];
+    
+    UIImageView* imgvAndrod = [[UIImageView alloc] init];
+    [self.view addSubview:imgvAndrod];
+    imgvAndrod.image = [UIImage imageNamed:@"QRAndrod"];
+    [imgvAndrod mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(imgSize, imgSize));
+        make.top.mas_equalTo(imgv.mas_bottom).offset(20);
+    }];
 }
 
 /*

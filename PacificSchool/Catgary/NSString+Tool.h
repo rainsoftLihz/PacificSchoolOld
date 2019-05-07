@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (Tool)
 -(BOOL)isNull;
++(NSString *)removeSuffix:(NSString *)numberStr;
 @end
 
 NS_ASSUME_NONNULL_END

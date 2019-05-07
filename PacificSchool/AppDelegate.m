@@ -15,6 +15,8 @@
 #import <Speech/Speech.h>
 #import "XTDesModel.h"
 #import "XTMeViewModel.h"
+#import <iflyMSC/IFlySpeechUtility.h>
+#import <iflyMSC/IFlySetting.h>
 #import "XTVersion.h"
 @interface AppDelegate ()
 @property (nonatomic, strong) NSTimer *timer; //声明计时器属性
@@ -29,6 +31,13 @@
     
     //NSString *des = [XTDesModel encryptUseDES2:@"123456" key:@"cpic@des"];
     //NSLog(@" des 加密 %@",des);
+    
+    //声音转文字代码块============
+    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",APPID_VALUE];
+    [IFlySpeechUtility createUtility:initString];
+    [IFlySetting setLogFile:LVL_NONE];
+    [IFlySetting showLogcat:YES];
+    
     sleep(2);
     [self switchRootViewController:NO];
     [self getRecord];

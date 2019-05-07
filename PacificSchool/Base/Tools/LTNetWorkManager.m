@@ -118,7 +118,13 @@
 
 + (void)uploadImageURL:(NSString *)url param:(NSDictionary *)param images:(UIImage *)image success:(void (^)(NSDictionary *result))success failure:(void (^)(NSString *msg))failure {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager ;
+    
+    if ([url containsString:@"http:"] || [url containsString:@"https:"]) {
+        manager = [AFHTTPSessionManager manager];
+    }else {
+        manager = [[AFHTTPSessionManager manager] initWithBaseURL:[NSURL URLWithString:kApi_base_url]];
+    }
     
     [manager POST:url parameters:[self getOldParamsFromParams:param] constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
@@ -140,7 +146,7 @@
 
 + (void)uploadImageURL:(NSString *)url param:(NSDictionary *)param image:(UIImage *)image success:(void (^)(NSDictionary *result))success failure:(void (^)(NSString *msg))failure {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager manager] initWithBaseURL:[NSURL URLWithString:kApi_base_url]];
     [manager POST:url parameters:[self getEncrypt] constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSData *imageData = UIImagePNGRepresentation(image);
         [formData appendPartWithFileData:imageData name:@"user_file" fileName:@"headImage.png" mimeType:@"image/jpeg"];
@@ -199,7 +205,13 @@
 
 + (void)postWithUrl:(NSString*)url param:(NSString*)param success:(void (^)(NSDictionary *result))success fail:(void (^)(NSString *msg))fail {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager ;
+    
+    if ([url containsString:@"http:"] || [url containsString:@"https:"]) {
+        manager = [AFHTTPSessionManager manager];
+    }else {
+        manager = [[AFHTTPSessionManager manager] initWithBaseURL:[NSURL URLWithString:kApi_base_url]];
+    }
     
     manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];//不设置会报-1016或者会有编码问题
     

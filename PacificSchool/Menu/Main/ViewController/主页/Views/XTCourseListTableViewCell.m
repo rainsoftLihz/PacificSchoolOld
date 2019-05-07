@@ -20,7 +20,7 @@
  
     self.titleLabel.text = model.mapTitle;
     self.subTitleLabel.text = [NSString stringWithFormat:@"%@",model.summary];
-    self.numberLAbel.text = [NSString stringWithFormat:@"评分:%.1f",model.scoreAverage.floatValue];
+    self.numberLAbel.text = [NSString stringWithFormat:@"评分:%@",[NSString stringWithFormat:@"%.1f",model.scoreAverage.floatValue]];
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kApi_FileServer_url,model.coverImg]]];
     
 }

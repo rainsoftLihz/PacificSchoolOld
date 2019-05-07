@@ -141,7 +141,7 @@
     [headView addSubview:self.titleLabel = titleLabel];
     
     UILabel *scroeLabel = [UILabel new];
-    scroeLabel.text = [NSString stringWithFormat:@"  课程评分:%.1f",[self.model.elnMap.scoreAverage floatValue]];
+    scroeLabel.text = [NSString stringWithFormat:@"  课程评分:%.1f", self.model.elnMap.scoreAverage.floatValue];
     scroeLabel.font = [UIFont systemFontOfSize:15];
     scroeLabel.textColor = UIColor.darkGrayColor;
     scroeLabel.backgroundColor = [UIColor whiteColor];
@@ -299,6 +299,7 @@
     [self.navigationController pushViewController:vc animated:YES];
     
 }
+
 
 /*
 #pragma mark - Navigation

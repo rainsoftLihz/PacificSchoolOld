@@ -86,7 +86,7 @@
         
         __weakSelf.rankNo = rankNo.integerValue;
         
-        __weakSelf.headView.scoreLabel.text = [NSString stringWithFormat:@"%.2f",rankScore.floatValue] ;
+        __weakSelf.headView.scoreLabel.text = [NSString stringWithFormat:@"%.1f",rankScore.floatValue]  ;
         
         
         NSLog(@" === %@ === %@",[rankNo class],rankScore);
@@ -120,7 +120,7 @@
             score = 50;
         }
         float rank = score / totalScore * 100;
-        NSString *scoreS = [NSString stringWithFormat:@"%.2f",rank];
+        NSString *scoreS = [NSString stringWithFormat:@"%.1f",rank] ;
         NSLog(@" 分数 == %.2f == %.2f== %.2f",rank,score,totalScore);
         [self.titles addObject:title];
         [self.socres addObject:scoreS];

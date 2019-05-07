@@ -44,7 +44,7 @@
 - (void)loadData {
     
     WeakSelf
-    [XTMainViewModel getRank:@{@"pageNo":@(self.page)} Success:^(NSArray * _Nonnull result,NSInteger total) {
+    [XTMainViewModel getRank:@{@"pageNo":@(self.page),@"pageSize":@"15"} Success:^(NSArray * _Nonnull result,NSInteger total) {
         
         [weakSelf.tableView.mj_footer endRefreshing];
         
@@ -53,7 +53,7 @@
            [weakSelf setUpUIWithData];
         }else{
            [weakSelf.modelArr addObjectsFromArray:result];
-            if (weakSelf.page == 10) {
+            if (weakSelf.page == 11) {
                 [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
             }
         }
@@ -80,7 +80,7 @@
         scroeLab.textColor = UIColor.whiteColor;
         scroeLab.font = kFont(14.0);
         scroeLab.textAlignment = NSTextAlignmentCenter;
-        scroeLab.text = modell.frontUserStatistics.rankScore;
+        scroeLab.text = [NSString stringWithFormat:@"%.1f",modell.frontUserStatistics.rankScore.floatValue] ;
         [self.view addSubview:scroeLab];
         if (i == 0) {
             self.numberOneLabel.text = modell.realName;
@@ -167,6 +167,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.modelArr.count > 100) {
+        return 97;
+    }
     return self.modelArr.count>3?self.modelArr.count-3:0;
 }
 
@@ -174,7 +177,7 @@
     if (indexPath.section == 0) {
         XTRankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         cell.indexLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row+4];
-        if (self.modelArr.count > indexPath.row+3) {
+        if (self.modelArr.count >= indexPath.row+3) {
             [cell loadModel:self.modelArr[indexPath.row+3]];
         }
         

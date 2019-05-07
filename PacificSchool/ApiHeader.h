@@ -25,7 +25,7 @@
  *
  *  @brief 测试环境: 1
  */
-#define kAppIsProduction 1
+#define kAppIsProduction 0
 
 /*!
  *
@@ -85,7 +85,7 @@
 
     /***生产环境****/
     // 基地址
-    #define kApi_base_url @"https://aitraining.cpic.com.cn/elnApi/api/"
+    #define kApi_base_url @"https://aitraining.cpic.com.cn"
 
     #define kApi_base_Add @"/elnApi/api/"
 

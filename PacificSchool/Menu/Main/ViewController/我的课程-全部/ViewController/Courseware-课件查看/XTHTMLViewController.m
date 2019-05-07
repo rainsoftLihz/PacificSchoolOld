@@ -29,6 +29,12 @@
     // Do any additional setup after loading the view from its nib.
     [self initData];
     [self initUI];
+    //监听是否触发home键挂起程序.
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:)
+//        name:UIApplicationWillResignActiveNotification object:nil];
+//    //监听是否重新进入程序程序.
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive:)
+//        name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)initData {
