@@ -383,5 +383,6 @@
 -(void)dealloc{
     //[self.websocket close];
 }
-    
+
  @end
+
