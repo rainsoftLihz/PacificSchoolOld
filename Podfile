@@ -28,7 +28,7 @@ target 'PacificSchool' do
     # 数据库
     #pod 'BGFMDB'
     #UI基础框架
-    pod 'QMUIKit', '~> 2.9.0'
+    #pod 'QMUIKit', '~> 2.9.0'
     #网页JavaScript控制
     #pod 'WebViewJavascriptBridge', '~> 6.0.3'
     #页面滑动控制

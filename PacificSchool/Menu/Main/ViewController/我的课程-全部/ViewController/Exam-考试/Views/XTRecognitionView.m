@@ -189,7 +189,7 @@
             self.websocket = nil;
             [self.websocket open];
         }
-        [self.websocket sendString:dataStr error:nil];
+        [self.websocket send:dataStr];
         sleep(2);
         if (index == times - 1) {
             //关闭句柄
@@ -246,10 +246,8 @@
 //                                               encoding:NSUTF8StringEncoding];
 //    NSLog(@"dataStr==>>>%@",dataStr)
 //
-//    BOOL flag = [self.websocket sendString:dataStr error:nil];
-//    if (!flag) {
-//        NSLog(@"=== write falure ====");
-//    }
+//    [self.websocket send:dataStr];
+
 //
 //}
 //
