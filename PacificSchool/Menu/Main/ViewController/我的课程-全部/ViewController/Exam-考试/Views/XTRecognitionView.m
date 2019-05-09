@@ -14,7 +14,7 @@
 #import "SocketRocket.h"
 #import "VoiceRecognizeRequest.h"
 #import "VoiceRecognizeResponse.h"
-@interface XTRecognitionView ()<SRWebSocketDelegate,IFlyPcmRecorderDelegate>
+@interface XTRecognitionView ()<SRWebSocketDelegate>
 @property(nonatomic,strong)UITextView *textView;
 
 @property(nonatomic,copy)NSString *recordString; ///< 记录录音数据
@@ -42,11 +42,11 @@
 - (void)initData {
     self.recordString = @"";
 
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textBack:) name:kRefreshTheDrugConsultTextField object:nil];
-//
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(voiceError) name:kVoiceError object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textBack:) name:kRefreshTheDrugConsultTextField object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(voiceError) name:kVoiceError object:nil];
     
-    [self.websocket open];
+//    [self.websocket open];
  
 }
 
@@ -138,45 +138,19 @@
     
     NSLog(@"按下");
     
-//    [[FlyVoiceManager shareManager] startSpeaking];
+    [[FlyVoiceManager shareManager] startSpeaking];
 
-    BOOL flag = [self.pcmRecorder start];
-    if (flag) {
-        NSLog(@"startRecord result is %d",flag);
-    }
-    NSLog(@"--->websoket State %ld",(long)self.websocket.readyState);
-    if (self.websocket.readyState != SR_OPEN) {
-        self.websocket = nil;
-        [self.websocket open];
-    }
+//    BOOL flag = [self.pcmRecorder start];
+//    if (flag) {
+//        NSLog(@"startRecord result is %d",flag);
+//    }
+//    NSLog(@"--->websoket State %ld",(long)self.websocket.readyState);
+//    if (self.websocket.readyState != SR_OPEN) {
+//        self.websocket = nil;
+//        [self.websocket open];
+//    }
     
     _msgLabel.text = @"松开停止录音";
-    
-//    [self sendFileData];
-    
-//    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"raninsoft" ofType:@"pcm"];
-//
-//    NSData* datafile= [NSData dataWithContentsOfFile:filePath];
-//
-//    NSInteger temp = 0;
-//    for (int i = 1028 ; i < datafile.length-1208; i+=1028) {
-//
-//        NSRange rang = NSMakeRange(temp, 1028);
-//        NSFileHandle* handler = [NSFileHandle fileHandleForReadingAtPath:filePath];[handler seekToFileOffset:(unsigned long long)rang.location];
-//        NSData* tempData = [handler readDataOfLength:rang.length];
-//
-//        temp = i;
-//        NSString* dataStrf = [tempData base64EncodedStringWithOptions:0];
-//        self.request.voiceData = dataStrf;
-//
-//        NSData* data = self.request.mj_JSONData;
-//        NSString* dataStr = [[NSString alloc] initWithData:data
-//                                                  encoding:NSUTF8StringEncoding];
-//
-//        [self.websocket sendString:dataStr error:nil];
-//
-//        //sleep(2);
-//    }
   
 }
 
@@ -226,19 +200,19 @@
 
 - (void)stopRecordBtn:(UIButton *)btn {
     
-//    WeakSelf
-//    [[FlyVoiceManager shareManager] stopSpeaking:^(NSString *str) {
-//        NSLog(@"刚才说的是:%@",str);
-//        weakSelf.textView.text = [weakSelf.textView.text stringByAppendingString:str];
-//    }];
-    [self.pcmRecorder stop];
+    WeakSelf
+    [[FlyVoiceManager shareManager] stopSpeaking:^(NSString *str) {
+        NSLog(@"刚才说的是:%@",str);
+        weakSelf.textView.text = [weakSelf.textView.text stringByAppendingString:str];
+    }];
+//    [self.pcmRecorder stop];
     sleep(2);
     NSLog(@"抬起");
     //[_manager endRecording];
     _msgLabel.text = @"按下开始录音";
     self.recordString = self.textView.text;
     
-//    [self requestMatching];
+    [self requestMatching];
 
 }
 
@@ -262,25 +236,26 @@
     
     self.textView.text = @"";
     self.recordString = @"";
+    self.matchingLabel.text = @"";
 }
 
-- (void)onIFlyRecorderBuffer:(const void *)buffer bufferSize:(int)size {
-    self.request.voiceData = [[[NSData alloc]initWithBytes:buffer length:size] base64EncodedStringWithOptions:0];
-    NSData* data = self.request.mj_JSONData;
-    NSString* dataStr = [[NSString alloc] initWithData:data
-                                               encoding:NSUTF8StringEncoding];
-    NSLog(@"dataStr==>>>%@",dataStr)
-
-    BOOL flag = [self.websocket sendString:dataStr error:nil];
-    if (!flag) {
-        NSLog(@"=== write falure ====");
-    }
-    
-}
-
-- (void)onIFlyRecorderError:(IFlyPcmRecorder *)recoder theError:(int)error {
-
-}
+//- (void)onIFlyRecorderBuffer:(const void *)buffer bufferSize:(int)size {
+//    self.request.voiceData = [[[NSData alloc]initWithBytes:buffer length:size] base64EncodedStringWithOptions:0];
+//    NSData* data = self.request.mj_JSONData;
+//    NSString* dataStr = [[NSString alloc] initWithData:data
+//                                               encoding:NSUTF8StringEncoding];
+//    NSLog(@"dataStr==>>>%@",dataStr)
+//
+//    BOOL flag = [self.websocket sendString:dataStr error:nil];
+//    if (!flag) {
+//        NSLog(@"=== write falure ====");
+//    }
+//
+//}
+//
+//- (void)onIFlyRecorderError:(IFlyPcmRecorder *)recoder theError:(int)error {
+//
+//}
 
 
 
@@ -408,7 +383,7 @@
 
 
 -(void)dealloc{
-    [self.websocket close];
+    //[self.websocket close];
 }
     
  @end
