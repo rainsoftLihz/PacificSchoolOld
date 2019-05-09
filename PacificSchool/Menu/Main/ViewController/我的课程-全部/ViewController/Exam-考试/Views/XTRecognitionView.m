@@ -222,6 +222,7 @@
     
     self.textView.text = @"";
     self.recordString = @"";
+    self.matchingLabel.text = @"";
 }
 
 @end
