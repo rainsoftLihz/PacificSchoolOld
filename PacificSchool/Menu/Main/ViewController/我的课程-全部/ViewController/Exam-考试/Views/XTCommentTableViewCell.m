@@ -15,6 +15,7 @@
     // Initialization code
     self.headImageView.layer.cornerRadius = 20;
     self.headImageView.layer.masksToBounds = YES;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

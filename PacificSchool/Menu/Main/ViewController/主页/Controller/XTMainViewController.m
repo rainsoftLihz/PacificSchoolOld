@@ -211,8 +211,15 @@
     footView.headView.layer.masksToBounds = 25;
     footView.frame = CGRectMake(0, 0, kScreenW, 150);
     [footView.sceneBtn addTarget:self action:@selector(gotoScene) forControlEvents:UIControlEventTouchUpInside];
+    [footView.dayCourseBtn addTarget:self action:@selector(gotoDayCource) forControlEvents:UIControlEventTouchUpInside];
     return footView;
 }
+
+-(void)gotoDayCource{
+    XTWebViewController* vc = [XTWebViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         return 110;

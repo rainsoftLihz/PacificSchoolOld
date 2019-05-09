@@ -20,7 +20,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Course-&#x8bfe;&#x7a0b;/XTSceneExerciseViewController.m"
-            timestampString = "577283315.979277"
+            timestampString = "578975857.899038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "201"
@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Course-&#x8bfe;&#x7a0b;/XTSceneExerciseViewController.m"
-            timestampString = "577283315.980003"
+            timestampString = "578975857.899163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
@@ -84,7 +84,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PacificSchool/Base/Tools/LTNetWorkManager.m"
-            timestampString = "577420235.196823"
+            timestampString = "578989716.957736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"
@@ -148,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PacificSchool/Menu/Main/ViewModel/XTMainViewModel.m"
-            timestampString = "577705484.961736"
+            timestampString = "579060175.611407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "349"
@@ -186,6 +186,54 @@
             startingLineNumber = "111"
             endingLineNumber = "111"
             landmarkName = "-startRecording"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Course-&#x8bfe;&#x7a0b;/XTSceneExerciseViewController.m"
+            timestampString = "578976429.924837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-clickedStartButtonHandler"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Exam-&#x8003;&#x8bd5;/Views/XTRecognitionView.m"
+            timestampString = "578999774.093617"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-webSocket:didReceiveMessage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PacificSchool/Menu/Main/ViewController/&#x6211;&#x7684;&#x8bfe;&#x7a0b;-&#x5168;&#x90e8;/ViewController/Course-&#x8bfe;&#x7a0b;/XTCoursewareViewController.m"
+            timestampString = "579065178.747137"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

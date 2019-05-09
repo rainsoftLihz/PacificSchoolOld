@@ -25,7 +25,7 @@
  *
  *  @brief 测试环境: 1
  */
-#define kAppIsProduction 0
+#define kAppIsProduction 1
 
 /*!
  *

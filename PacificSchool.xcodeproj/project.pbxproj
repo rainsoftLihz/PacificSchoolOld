@@ -28,6 +28,8 @@
 		5306070122801DA3001AFB99 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 530606F922801DA3001AFB99 /* README.md */; };
 		5306070222801DA3001AFB99 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 530606FD22801DA3001AFB99 /* NSObject+YYModel.m */; };
 		5306070322801DA3001AFB99 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 530606FE22801DA3001AFB99 /* YYClassInfo.m */; };
+		53070A4F22826B2700351B7B /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 53070A4E22826B2700351B7B /* libiconv.tbd */; };
+		53070A582282A9E400351B7B /* XTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53070A572282A9E400351B7B /* XTWebViewController.m */; };
 		531A6EB82266D5EF00D0DCB8 /* NSString+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 531A6EB72266D5EF00D0DCB8 /* NSString+Tool.m */; };
 		532799212275BE670046DCB0 /* QRAndrod.png in Resources */ = {isa = PBXBuildFile; fileRef = 532799202275BE670046DCB0 /* QRAndrod.png */; };
 		5329C10922657A2200EC8ABE /* XTVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10822657A2200EC8ABE /* XTVersion.m */; };
@@ -35,6 +37,7 @@
 		5329C10F2265D4F300EC8ABE /* XTPingfenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C10E2265D4F300EC8ABE /* XTPingfenView.m */; };
 		5329C1172265DD3600EC8ABE /* PCStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C1162265DD3600EC8ABE /* PCStarRatingView.m */; };
 		532A8FD322687FAB00596E5C /* ssl.cer in Resources */ = {isa = PBXBuildFile; fileRef = 532A8FD222687FAB00596E5C /* ssl.cer */; };
+		532AF46D228184370012C624 /* raninsoft.pcm in Resources */ = {isa = PBXBuildFile; fileRef = 53DFF7912281793E0000BEB7 /* raninsoft.pcm */; };
 		5371D90022674EEA00706DB2 /* XTAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D8FF22674EEA00706DB2 /* XTAboutMeController.m */; };
 		5371D903226755DD00706DB2 /* XTAboutCPICViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D902226755DD00706DB2 /* XTAboutCPICViewController.m */; };
 		5371D9062267580E00706DB2 /* XTQRcodeVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D9052267580E00706DB2 /* XTQRcodeVController.m */; };
@@ -78,7 +81,6 @@
 		53DFF75922812E180000BEB7 /* SRIOConsumerPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DFF74122812E180000BEB7 /* SRIOConsumerPool.m */; };
 		53DFF75A22812E180000BEB7 /* SRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DFF74222812E180000BEB7 /* SRConstants.m */; };
 		53DFF75B22812E180000BEB7 /* NSURLRequest+SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DFF74722812E180000BEB7 /* NSURLRequest+SRWebSocket.m */; };
-		53DFF7922281793E0000BEB7 /* raninsoft.pcm in Resources */ = {isa = PBXBuildFile; fileRef = 53DFF7912281793E0000BEB7 /* raninsoft.pcm */; };
 		FB00B50D22329A770052359E /* XTMyCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB00B50C22329A770052359E /* XTMyCourseModel.m */; };
 		FB00B51022329A950052359E /* XTElnMapJobListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB00B50F22329A950052359E /* XTElnMapJobListModel.m */; };
 		FB00B51322329AA80052359E /* XTElnMapUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB00B51222329AA80052359E /* XTElnMapUserModel.m */; };
@@ -338,6 +340,9 @@
 		530606FD22801DA3001AFB99 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
 		530606FE22801DA3001AFB99 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
 		530606FF22801DA3001AFB99 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
+		53070A4E22826B2700351B7B /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		53070A562282A9E400351B7B /* XTWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTWebViewController.h; sourceTree = "<group>"; };
+		53070A572282A9E400351B7B /* XTWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTWebViewController.m; sourceTree = "<group>"; };
 		531A6EB62266D5EF00D0DCB8 /* NSString+Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Tool.h"; sourceTree = "<group>"; };
 		531A6EB72266D5EF00D0DCB8 /* NSString+Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tool.m"; sourceTree = "<group>"; };
 		532799202275BE670046DCB0 /* QRAndrod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QRAndrod.png; sourceTree = "<group>"; };
@@ -866,6 +871,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53070A4F22826B2700351B7B /* libiconv.tbd in Frameworks */,
 				530606E5227FD384001AFB99 /* libc++.tbd in Frameworks */,
 				530606E3227FD2BC001AFB99 /* CoreGraphics.framework in Frameworks */,
 				530606E1227FD2AE001AFB99 /* QuartzCore.framework in Frameworks */,
@@ -1153,6 +1159,7 @@
 		A4E917F3C5224A442207D8E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				53070A4E22826B2700351B7B /* libiconv.tbd */,
 				530606E4227FD384001AFB99 /* libc++.tbd */,
 				530606E2227FD2BC001AFB99 /* CoreGraphics.framework */,
 				530606E0227FD2AE001AFB99 /* QuartzCore.framework */,
@@ -1273,6 +1280,8 @@
 				FB18A3302232BF72001496CB /* XTMainViewController.h */,
 				FB18A32F2232BF72001496CB /* XTMainViewController.m */,
 				FB18A3312232BF72001496CB /* XTMainViewController.xib */,
+				53070A562282A9E400351B7B /* XTWebViewController.h */,
+				53070A572282A9E400351B7B /* XTWebViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2205,6 +2214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				532AF46D228184370012C624 /* raninsoft.pcm in Resources */,
 				FB9CAD1E2234F2180070E8D6 /* XTCourseDetailViewController.xib in Resources */,
 				FB9CAD2E2234F25A0070E8D6 /* XTVideoViewController.xib in Resources */,
 				FBE30C4822301BB60085B94C /* XTCompleteTableViewCell.xib in Resources */,
@@ -2236,7 +2246,6 @@
 				FB2392CD22490E99001ADD22 /* SVProgressHUD.bundle in Resources */,
 				FB4CA2E521EF31260035347F /* Assets.xcassets in Resources */,
 				FBD00959222D7DBD0025C5E5 /* XTSettingTableViewCell.xib in Resources */,
-				53DFF7922281793E0000BEB7 /* raninsoft.pcm in Resources */,
 				FB18A3112232BEDE001496CB /* XTMyCourseTableViewCell.xib in Resources */,
 				FBC3899D223DED8D005058E3 /* XTHistoryTableViewCell.xib in Resources */,
 				FB175282223AAFD9000EC109 /* duihao@3x.png in Resources */,
@@ -2290,6 +2299,7 @@
 				5371D9062267580E00706DB2 /* XTQRcodeVController.m in Sources */,
 				FB3D6A54222EBFEB00C8D2AD /* LTTools.m in Sources */,
 				FB23922B22490A70001ADD22 /* NSObject+MJProperty.m in Sources */,
+				53070A582282A9E400351B7B /* XTWebViewController.m in Sources */,
 				FB2392DD22491071001ADD22 /* FMDatabase.m in Sources */,
 				FB3D6A3A222EA76F00C8D2AD /* XTHostSettingViewController.m in Sources */,
 				FB9CACDC2234CB6D0070E8D6 /* UIImageView+ZFCache.m in Sources */,

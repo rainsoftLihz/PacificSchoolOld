@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
     @property(nonatomic,strong) NSString* reqNo;
     
     // 识别状态
-    @property(nonatomic,strong) NSString* status;
+    @property(nonatomic,assign) NSInteger status;
 
 @end
 
@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
     
     // 成功失败标识
     @property(nonatomic,assign)NSInteger result;
-    
+
     // 返回代码
     @property(nonatomic,strong) NSString* code;
     

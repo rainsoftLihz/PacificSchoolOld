@@ -53,7 +53,7 @@ UITableViewDataSource
 
 @property (nonatomic,strong)UITextView *textView;
 @property (nonatomic,strong)UITextField *commentTF;
-@property (nonatomic,strong)NSArray *commentModels;
+@property (nonatomic,strong)NSMutableArray *commentModels;
 
 @end
 
@@ -70,7 +70,7 @@ UITableViewDataSource
 
 - (void)initData {
     
-    self.commentModels = [NSArray array];
+    self.commentModels = [NSMutableArray array];
     
     NSDictionary *mapModel = @{@"courseId":self.mapModel.objectId};
     WeakSelf
@@ -87,7 +87,7 @@ UITableViewDataSource
 
     WeakSelf
     [XTMainViewModel getCourseComment:mapModel success:^(NSArray * _Nonnull result) {
-        weakSelf.commentModels = result;
+        weakSelf.commentModels = result.mutableCopy;
         [weakSelf.tableView reloadData];
         
     }];
@@ -301,10 +301,10 @@ UITableViewDataSource
     _tableView.hidden = YES;
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.dataSource = self;
-    [_tableView registerNib:[UINib nibWithNibName:@"XTCommentTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"XTCommentTableViewCell" bundle:nil] forCellReuseIdentifier:@"XTCommentTableViewCell"];
     _tableView.tableFooterView = [UIView new];
-    _tableView.estimatedRowHeight = 44;
-    _tableView.rowHeight = UITableViewAutomaticDimension;
+    _tableView.estimatedRowHeight = 60;
+  
     [_scorView addSubview:_tableView];
     
     
@@ -377,8 +377,12 @@ UITableViewDataSource
         NSLog(@"评论 %@",param);
         WeakSelf
         [XTMainViewModel insterCourseComment:param success:^(NSDictionary * _Nonnull result) {
-            
-            [weakSelf requestComment];
+            if (result && result[@"data"][@"elnCourseComment"]) {
+               XTCommentModel* model = [XTCommentModel mj_objectWithKeyValues:result[@"data"][@"elnCourseComment"]];
+                [weakSelf.commentModels insertObject:model atIndex:0];
+                [weakSelf.tableView reloadData];
+            }
+
             weakSelf.commentTF.text = @"";
         }];
     }
@@ -417,16 +421,33 @@ UITableViewDataSource
     
 }
 
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+      return UITableViewAutomaticDimension;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    XTCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    XTCommentModel *model = self.commentModels[indexPath.row];
+    XTCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"XTCommentTableViewCell"];
     
-    NSString *date = [LSDateTool ymdhm_dateConvrrtTimestamp:[model.createTime integerValue]];
-    cell.dateLabel.text = date;
-    cell.nameLabel.text = model.nickname;
-    cell.commnetLabel.text = model.content;
-//    cell.commnetLabel.text = @"account_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avataraccount_avatar";
-    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kApi_FileServer_url,model.headimgurl]] placeholderImage:[UIImage imageNamed:@"account_avatar"]];
+    if (indexPath.row < self.commentModels.count) {
+        XTCommentModel *model = self.commentModels[indexPath.row];
+        
+        NSString *date = [LSDateTool ymdhm_dateConvrrtTimestamp:[model.createTime integerValue]];
+        cell.dateLabel.text = date;
+        cell.nameLabel.text = model.nickname;
+        cell.commnetLabel.text = model.content;
+        if (model.headimgurl != nil && model.headimgurl.length > 0) {
+            NSString *encodeUrlStr = [model.headimgurl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+            NSString* urlStr = [NSString stringWithFormat:@"%@%@",kApi_FileServer_url,encodeUrlStr];
+            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"account_avatar"]];
+        }else {
+            cell.headImageView.image = [UIImage imageNamed:@"account_avatar"];
+        }
+        
+        cell.commnetLabel.numberOfLines = 0;
+        cell.commnetLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    }
+    
     return cell;
 }
 
