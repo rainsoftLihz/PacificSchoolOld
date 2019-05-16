@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		445C5E4AC53B26CFE12AB202 /* libPods-PacificSchool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9514753196CAFA58E288E2 /* libPods-PacificSchool.a */; };
-		530606C9227FD063001AFB99 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530606C8227FD063001AFB99 /* iflyMSC.framework */; };
-		530606D1227FD0C2001AFB99 /* IATConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 530606CA227FD0C2001AFB99 /* IATConfig.m */; };
-		530606D2227FD0C2001AFB99 /* FlyVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 530606CC227FD0C2001AFB99 /* FlyVoiceManager.m */; };
-		530606D3227FD0C2001AFB99 /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 530606CF227FD0C2001AFB99 /* ISRDataHelper.m */; };
 		530606D5227FD252001AFB99 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530606D4227FD251001AFB99 /* AVFoundation.framework */; };
 		530606D7227FD25C001AFB99 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530606D6227FD25C001AFB99 /* CoreTelephony.framework */; };
 		530606D9227FD264001AFB99 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530606D8227FD264001AFB99 /* CoreLocation.framework */; };
@@ -35,6 +31,9 @@
 		5329C1172265DD3600EC8ABE /* PCStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5329C1162265DD3600EC8ABE /* PCStarRatingView.m */; };
 		532A8FD322687FAB00596E5C /* ssl.cer in Resources */ = {isa = PBXBuildFile; fileRef = 532A8FD222687FAB00596E5C /* ssl.cer */; };
 		532AF46D228184370012C624 /* raninsoft.pcm in Resources */ = {isa = PBXBuildFile; fileRef = 53DFF7912281793E0000BEB7 /* raninsoft.pcm */; };
+		53353B4C228D0FEE008ACDC2 /* meta_vad_16k.jet in Resources */ = {isa = PBXBuildFile; fileRef = 53353B4B228D0FEE008ACDC2 /* meta_vad_16k.jet */; };
+		53353B4E228D0FFE008ACDC2 /* AIPIFlyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53353B4D228D0FFE008ACDC2 /* AIPIFlyMSC.framework */; };
+		53353B51228D10EE008ACDC2 /* XTRecognitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53353B4F228D10EE008ACDC2 /* XTRecognitionView.m */; };
 		5371D90022674EEA00706DB2 /* XTAboutMeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D8FF22674EEA00706DB2 /* XTAboutMeController.m */; };
 		5371D903226755DD00706DB2 /* XTAboutCPICViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D902226755DD00706DB2 /* XTAboutCPICViewController.m */; };
 		5371D9062267580E00706DB2 /* XTQRcodeVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5371D9052267580E00706DB2 /* XTQRcodeVController.m */; };
@@ -119,7 +118,6 @@
 		FB6F9430223010E400754F3A /* XTRankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB6F942E223010E400754F3A /* XTRankTableViewCell.xib */; };
 		FB6F943422301AF700754F3A /* XTCompleteCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6F943222301AF700754F3A /* XTCompleteCourseViewController.m */; };
 		FB6F943522301AF700754F3A /* XTCompleteCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB6F943322301AF700754F3A /* XTCompleteCourseViewController.xib */; };
-		FB7DD942223CE51F00A8CC1A /* XTRecognitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7DD941223CE51F00A8CC1A /* XTRecognitionView.m */; };
 		FB826B47222ED39300C2EF29 /* XTCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB826B46222ED39300C2EF29 /* XTCourseModel.m */; };
 		FB826B4A222ED75800C2EF29 /* XTElnMapListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB826B49222ED75800C2EF29 /* XTElnMapListModel.m */; };
 		FB826B53222EDD7200C2EF29 /* XTCourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB826B51222EDD7200C2EF29 /* XTCourseListViewController.m */; };
@@ -207,14 +205,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		530606C8227FD063001AFB99 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
-		530606CA227FD0C2001AFB99 /* IATConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IATConfig.m; sourceTree = "<group>"; };
-		530606CB227FD0C2001AFB99 /* FlyVoiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlyVoiceManager.h; sourceTree = "<group>"; };
-		530606CC227FD0C2001AFB99 /* FlyVoiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlyVoiceManager.m; sourceTree = "<group>"; };
-		530606CD227FD0C2001AFB99 /* IATConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IATConfig.h; sourceTree = "<group>"; };
-		530606CE227FD0C2001AFB99 /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definition.h; sourceTree = "<group>"; };
-		530606CF227FD0C2001AFB99 /* ISRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRDataHelper.m; sourceTree = "<group>"; };
-		530606D0227FD0C2001AFB99 /* ISRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISRDataHelper.h; sourceTree = "<group>"; };
 		530606D4227FD251001AFB99 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		530606D6227FD25C001AFB99 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		530606D8227FD264001AFB99 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -247,6 +237,10 @@
 		5329C1152265DD3500EC8ABE /* PCStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCStarRatingView.h; sourceTree = "<group>"; };
 		5329C1162265DD3600EC8ABE /* PCStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCStarRatingView.m; sourceTree = "<group>"; };
 		532A8FD222687FAB00596E5C /* ssl.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = ssl.cer; sourceTree = "<group>"; };
+		53353B4B228D0FEE008ACDC2 /* meta_vad_16k.jet */ = {isa = PBXFileReference; lastKnownFileType = file; path = meta_vad_16k.jet; sourceTree = "<group>"; };
+		53353B4D228D0FFE008ACDC2 /* AIPIFlyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AIPIFlyMSC.framework; sourceTree = "<group>"; };
+		53353B4F228D10EE008ACDC2 /* XTRecognitionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTRecognitionView.m; sourceTree = "<group>"; };
+		53353B50228D10EE008ACDC2 /* XTRecognitionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTRecognitionView.h; sourceTree = "<group>"; };
 		5371D8FE22674EEA00706DB2 /* XTAboutMeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTAboutMeController.h; sourceTree = "<group>"; };
 		5371D8FF22674EEA00706DB2 /* XTAboutMeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTAboutMeController.m; sourceTree = "<group>"; };
 		5371D901226755DD00706DB2 /* XTAboutCPICViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTAboutCPICViewController.h; sourceTree = "<group>"; };
@@ -394,8 +388,6 @@
 		FB6F943122301AF700754F3A /* XTCompleteCourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTCompleteCourseViewController.h; sourceTree = "<group>"; };
 		FB6F943222301AF700754F3A /* XTCompleteCourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTCompleteCourseViewController.m; sourceTree = "<group>"; };
 		FB6F943322301AF700754F3A /* XTCompleteCourseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XTCompleteCourseViewController.xib; sourceTree = "<group>"; };
-		FB7DD940223CE51F00A8CC1A /* XTRecognitionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTRecognitionView.h; sourceTree = "<group>"; };
-		FB7DD941223CE51F00A8CC1A /* XTRecognitionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTRecognitionView.m; sourceTree = "<group>"; };
 		FB826B45222ED39300C2EF29 /* XTCourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTCourseModel.h; sourceTree = "<group>"; };
 		FB826B46222ED39300C2EF29 /* XTCourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTCourseModel.m; sourceTree = "<group>"; };
 		FB826B48222ED75800C2EF29 /* XTElnMapListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTElnMapListModel.h; sourceTree = "<group>"; };
@@ -562,8 +554,8 @@
 				530606DB227FD270001AFB99 /* SystemConfiguration.framework in Frameworks */,
 				530606D9227FD264001AFB99 /* CoreLocation.framework in Frameworks */,
 				530606D7227FD25C001AFB99 /* CoreTelephony.framework in Frameworks */,
+				53353B4E228D0FFE008ACDC2 /* AIPIFlyMSC.framework in Frameworks */,
 				530606D5227FD252001AFB99 /* AVFoundation.framework in Frameworks */,
-				530606C9227FD063001AFB99 /* iflyMSC.framework in Frameworks */,
 				FB17527F223AAFD9000EC109 /* libmp3lame.a in Frameworks */,
 				445C5E4AC53B26CFE12AB202 /* libPods-PacificSchool.a in Frameworks */,
 			);
@@ -572,21 +564,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		530606C7227FD012001AFB99 /* FlyVoice */ = {
-			isa = PBXGroup;
-			children = (
-				530606CE227FD0C2001AFB99 /* Definition.h */,
-				530606CD227FD0C2001AFB99 /* IATConfig.h */,
-				530606CA227FD0C2001AFB99 /* IATConfig.m */,
-				530606D0227FD0C2001AFB99 /* ISRDataHelper.h */,
-				530606CF227FD0C2001AFB99 /* ISRDataHelper.m */,
-				530606CB227FD0C2001AFB99 /* FlyVoiceManager.h */,
-				530606CC227FD0C2001AFB99 /* FlyVoiceManager.m */,
-				530606C8227FD063001AFB99 /* iflyMSC.framework */,
-			);
-			path = FlyVoice;
-			sourceTree = "<group>";
-		};
 		530606E9227FE7C9001AFB99 /* TBSocketVoice */ = {
 			isa = PBXGroup;
 			children = (
@@ -1086,8 +1063,10 @@
 		FB4CA2DA21EF31250035347F /* PacificSchool */ = {
 			isa = PBXGroup;
 			children = (
+				53353B4B228D0FEE008ACDC2 /* meta_vad_16k.jet */,
 				53DFF7912281793E0000BEB7 /* raninsoft.pcm */,
 				532A8FD222687FAB00596E5C /* ssl.cer */,
+				53353B4D228D0FFE008ACDC2 /* AIPIFlyMSC.framework */,
 				5390136F226472DD00073F3B /* Catgary */,
 				FB4CA2DB21EF31250035347F /* AppDelegate.h */,
 				FB4CA2DC21EF31250035347F /* AppDelegate.m */,
@@ -1114,7 +1093,6 @@
 			isa = PBXGroup;
 			children = (
 				530606E9227FE7C9001AFB99 /* TBSocketVoice */,
-				530606C7227FD012001AFB99 /* FlyVoice */,
 				FB2392BE22490E99001ADD22 /* SVProgressHUD */,
 				FBCCCB6F2244C9E6009CD83B /* EncryptUtil */,
 				FB175275223AAFD9000EC109 /* lib */,
@@ -1333,6 +1311,8 @@
 		FB9CAD302234F2B90070E8D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				53353B50228D10EE008ACDC2 /* XTRecognitionView.h */,
+				53353B4F228D10EE008ACDC2 /* XTRecognitionView.m */,
 				FB3D6B7A2237F41E0096B2AC /* XTCommentTableViewCell.h */,
 				FB3D6B792237F41D0096B2AC /* XTCommentTableViewCell.m */,
 				FB3D6B782237F41D0096B2AC /* XTCommentTableViewCell.xib */,
@@ -1346,8 +1326,6 @@
 				FB9CAD382234F7FD0070E8D6 /* XTExamView.m */,
 				FB9CAD3A223500EA0070E8D6 /* XTQuestionView.h */,
 				FB9CAD3B223500EA0070E8D6 /* XTQuestionView.m */,
-				FB7DD940223CE51F00A8CC1A /* XTRecognitionView.h */,
-				FB7DD941223CE51F00A8CC1A /* XTRecognitionView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1463,6 +1441,7 @@
 				FBE30C4822301BB60085B94C /* XTCompleteTableViewCell.xib in Resources */,
 				FB9CAD222234F2180070E8D6 /* XTMyCourseListViewController.xib in Resources */,
 				FB9CAD232234F2180070E8D6 /* XTExamViewController.xib in Resources */,
+				53353B4C228D0FEE008ACDC2 /* meta_vad_16k.jet in Resources */,
 				FB18A3372232BF72001496CB /* XTMainFootView.xib in Resources */,
 				FB4CA2E821EF31260035347F /* LaunchScreen.storyboard in Resources */,
 				FB9CACDF2234CB6D0070E8D6 /* ZFPlayer.bundle in Resources */,
@@ -1597,7 +1576,6 @@
 				FB9CAD1D2234F2180070E8D6 /* XTMyCourseListViewController.m in Sources */,
 				FB3D6A59222EBFEB00C8D2AD /* NSString+MD5.m in Sources */,
 				FB2392CA22490E99001ADD22 /* SVProgressAnimatedView.m in Sources */,
-				530606D3227FD0C2001AFB99 /* ISRDataHelper.m in Sources */,
 				FB9CACF72234EE260070E8D6 /* XTExamItemListModel.m in Sources */,
 				FBDD56BE2233AAE2008442B1 /* XTCourseTypeModel.m in Sources */,
 				FB9CAD202234F2180070E8D6 /* XTCourseDetailViewController.m in Sources */,
@@ -1637,7 +1615,6 @@
 				FB9CACD92234CB6D0070E8D6 /* UIView+CustomControlView.m in Sources */,
 				FBDD56B3223393DE008442B1 /* XTCourseExamModel.m in Sources */,
 				FB18A3052232BE84001496CB /* XTPunchCardViewController.m in Sources */,
-				530606D1227FD0C2001AFB99 /* IATConfig.m in Sources */,
 				FB3D6A58222EBFEB00C8D2AD /* LTNetWorkManager.m in Sources */,
 				FB18A34B2232C092001496CB /* XTHotCourseViewController.m in Sources */,
 				FBCCCB7E2244D1B8009CD83B /* XTDesModel.m in Sources */,
@@ -1667,7 +1644,6 @@
 				FB3D6B82223809750096B2AC /* LSDateTool.m in Sources */,
 				FB3D6B7C2237F41E0096B2AC /* XTCommentTableViewCell.m in Sources */,
 				FB9CACE42234CB6D0070E8D6 /* ASValueTrackingSlider.m in Sources */,
-				530606D2227FD0C2001AFB99 /* FlyVoiceManager.m in Sources */,
 				FB9CAD332234F2D30070E8D6 /* XTAnswerButton.m in Sources */,
 				FBC3899C223DED8D005058E3 /* XTHistoryTableViewCell.m in Sources */,
 				FBD0094E222D7AF40025C5E5 /* XTRankViewController.m in Sources */,
@@ -1683,13 +1659,13 @@
 				FB826B4A222ED75800C2EF29 /* XTElnMapListModel.m in Sources */,
 				FB6F942F223010E400754F3A /* XTRankTableViewCell.m in Sources */,
 				FB18A3392232BF72001496CB /* XTMainFootView.m in Sources */,
+				53353B51228D10EE008ACDC2 /* XTRecognitionView.m in Sources */,
 				FB88B9C92222DD07005AAA4E /* XTBaseTabBarViewController.m in Sources */,
 				FB9CACF12234D8690070E8D6 /* ProgressSlider.m in Sources */,
 				FB175271223AAF84000EC109 /* LSRecordView.m in Sources */,
 				FB9CAD212234F2180070E8D6 /* XTCoursewareViewController.m in Sources */,
 				FB9CAD2B2234F25A0070E8D6 /* XTHTMLViewController.m in Sources */,
 				FB826B47222ED39300C2EF29 /* XTCourseModel.m in Sources */,
-				FB7DD942223CE51F00A8CC1A /* XTRecognitionView.m in Sources */,
 				FB88B9BA2222DC41005AAA4E /* XTMeViewController.m in Sources */,
 				530606EF227FE7F1001AFB99 /* JFRSecurity.m in Sources */,
 			);
@@ -1783,11 +1759,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PacificSchool/Base/FlyVoice",
+					"$(PROJECT_DIR)/PacificSchool",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = PacificSchool/PrefixHeader.pch;
 				INFOPLIST_FILE = PacificSchool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

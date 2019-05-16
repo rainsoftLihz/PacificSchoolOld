@@ -14,7 +14,13 @@
 #import "SocketRocket.h"
 #import "VoiceRecognizeRequest.h"
 #import "VoiceRecognizeResponse.h"
-@interface XTRecognitionView ()<SRWebSocketDelegate>
+#import <AIPIFlyMSC/AIPIFlyRecordHelper.h>
+
+@interface XTRecognitionView ()
+<
+SRWebSocketDelegate,
+AIPIFlyRecordDelegate
+>
 @property(nonatomic,strong)UITextView *textView;
 
 @property(nonatomic,copy)NSString *recordString; ///< 记录录音数据
@@ -22,8 +28,11 @@
 @property(nonatomic,strong)UILabel *matchingLabel;
 
 @property(nonatomic, strong)SRWebSocket *websocket;
-@property(nonatomic, strong)IFlyPcmRecorder  *pcmRecorder;
+//@property(nonatomic, strong)IFlyPcmRecorder  *pcmRecorder;
+@property(nonatomic, strong) NSMutableDictionary *dict;
+@property(nonatomic, strong) AIPIFlyRecordHelper *aIPIFlyRecor;
 @property(nonatomic, strong)VoiceRecognizeRequest *request;
+@property(nonatomic, assign) BOOL isStart;
     
 @end
 
@@ -41,117 +50,147 @@
 
 - (void)initData {
     self.recordString = @"";
+    self.isStart = NO;
+    self.dict = [NSMutableDictionary dictionaryWithDictionary:@{@"token":@"ca5eafd0fc574a2cafe3f9481603a102",
+                                    @"appId":@"df0c498c847149d3aa4488b39f1e27f5",
+                                    @"bizNo":@"",
+                                    @"reqNo":@"",
+                                    @"rate":@"16k",
+                                    @"audioStatus":@"1",
+                                    }];
+}
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textBack:) name:kRefreshTheDrugConsultTextField object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(voiceError) name:kVoiceError object:nil];
+#pragma mark - AIPIFlyRecordDelegate
+// result录音数据 epStatus 0没有检测到端点，1有效音频，2检测到前端点，3检测到后端点
+- (void)onRecordResult:(NSData *)result epStatus:(int) epStatus {
+    if (epStatus != 0) {
+        NSLog(@"epStatus:%d,size:%ld", epStatus, result.length);
+    }
     
-//    [self.websocket open];
- 
-}
-
-#pragma mark --- lazy
--(SRWebSocket *)websocket{
-    if (!_websocket) {
-        _websocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:@"wss://aiskillsit.cpic.com.cn/websocket/voiceRecognize/online"]];
-        _websocket.delegate = self;
+    if (epStatus == 2) {
+        // 第一段
+        // NOTE: 此处需要剪裁,不然socket报1001.其他场景建议测试后,确定是否需要
+        long A_RECEIVE = 1024*2;
+        NSMutableArray *videoDataArray = [[NSMutableArray alloc] init];
+        int lastIValue = 0;
+        for (int i = 0; i<= [result length]-A_RECEIVE; i+=A_RECEIVE) {
+            lastIValue  = i+A_RECEIVE;
+            NSString *rangeStr = [NSString stringWithFormat:@"%i,%i",i,A_RECEIVE];
+            NSData *subData = [result subdataWithRange:NSRangeFromString(rangeStr)];
+            [videoDataArray addObject:subData];
+            if (self.isStart) {
+                self.dict[@"audioStatus"]= @"1";
+                self.isStart = NO;
+            } else {
+                self.dict[@"audioStatus"]= @"2";
+            }
+            NSString *base64String = [subData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+            self.dict[@"voiceData"] = base64String;
+            NSData *jsonData= [NSJSONSerialization dataWithJSONObject:self.dict options:NSJSONWritingPrettyPrinted error:nil];
+            NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            [self.websocket send:jsonStr];
+            [NSThread sleepForTimeInterval:0.01];
+        }
+    } else if (epStatus == 1) {
+        // 中间
+        self.dict[@"audioStatus"]= @"2";
+        NSString *base64String = [result base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        self.dict[@"voiceData"] = base64String;
+        NSData *jsonData= [NSJSONSerialization dataWithJSONObject:self.dict options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [self.websocket send:jsonStr];
+    }  else if (epStatus == 3) {
+        // 结束
+        self.dict[@"audioStatus"]= @"2";
+        NSString *base64String = [result base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        self.dict[@"voiceData"] = base64String;
+        NSData *jsonData= [NSJSONSerialization dataWithJSONObject:self.dict options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [self.websocket send:jsonStr];
     }
-    return _websocket;
 }
-
--(VoiceRecognizeRequest *)request{
-    if (!_request) {
-        _request = [[VoiceRecognizeRequest alloc] initWith:@"9585b61fb61c4f9fb0129c7152b4d191" appId:@"e22cceb74ada4364b76313a44ed52049" reqNo:@"" rate:@"16k" audioStatus:@"1"];
-        _request.language = @"1";
-    }
-    return _request;
-}
-
-
--(IFlyPcmRecorder *)pcmRecorder{
-    if (!_pcmRecorder) {
-        _pcmRecorder = [IFlyPcmRecorder sharedInstance];
-        _pcmRecorder.delegate = self;
-        [_pcmRecorder setSample:@"16000"];
-    }
-    return _pcmRecorder;
+- (void) onError:(int) code {
+    NSLog(@"code:%d", code);
 }
 
 #pragma mark --- swwebsocketDelegate
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket;
 {
     NSLog(@"Websocket Connected");
+    NSString *reqNo = self.dict[@"reqNo"];
+    if (nil == reqNo || [reqNo isEqualToString:@""]) {
+        // 初次使用空值换取有效 reqNO
+        NSData *data= [NSJSONSerialization dataWithJSONObject:self.dict options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *jsonStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        //        NSLog(@"%@", self.dict);
+        [webSocket send:jsonStr];
+    }
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
 {
     NSLog(@":( Websocket Failed With Error %@", error);
-//    [self.websocket open];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
 {
     NSLog(@"WebSocket Received \"%@\"", message);
-    
-    VoiceRecognizeResponse* response = [VoiceRecognizeResponse mj_objectWithKeyValues:message];
-    if ([response.code isEqualToString:@"0000"]) {
-        if (response.content && [self.request.reqNo isEqualToString:@""]) {
-            self.request.reqNo = response.content.reqNo;
-        }
-        if (response.content) {
-            self.textView.text = [self.textView.text stringByAppendingString:response.content.voiceMessage];
-        }
+    NSData *jsonData = [message dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if (nil != dic[@"content"] && [NSNull null] != dic[@"content"]
+        && nil != dic[@"content"][@"reqNo"] && [NSNull null] != dic[@"content"][@"reqNo"]) {
+        NSString *reqNo = dic[@"content"][@"reqNo"];
+        self.dict[@"reqNo"] = reqNo;
     }
-    
-
+    if (nil != dic[@"content"] && [NSNull null] != dic[@"content"]
+        && nil != dic[@"content"][@"voiceMessage"] && [NSNull null] != dic[@"content"][@"voiceMessage"]) {
+        NSString *voiceMessage = dic[@"content"][@"voiceMessage"];
+        self.textView.text = [self.textView.text stringByAppendingString:voiceMessage];
+    }
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
 {
     NSLog(@"WebSocket closed");
-    [self.websocket open];
+    self.dict[@"reqNo"] = @"";
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceivePong:(NSData *)pongPayload;
 {
     NSLog(@"Websocket received pong");
 }
-
-
-
-#pragma mark --- 讯飞通知回调
--(void)voiceError{
-    [[FlyVoiceManager shareManager] cancleSpeaking:^(NSString *str){
-        NSLog(@"canceltemp====%@",str);
-    }];
-}
-
--(void)textBack:(NSNotification*)info{
-    NSString *tempStr = info.object;
-    NSLog(@"temp====%@",tempStr);
-    self.textView.text = [self.textView.text stringByAppendingString:tempStr];
-}
-
-
-
+#pragma mark - touch event
 - (void)startRecordEvent:(UIButton *)btn {
-    
     NSLog(@"按下");
-    
-    [[FlyVoiceManager shareManager] startSpeaking];
+    if (self.websocket) {
+        [self.websocket close];
+        self.websocket = nil;
+    }
+    SRWebSocket *webSocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:@"wss://aiskill.cpic.com.cn/websocket/voiceRecognize/online"]];
+    webSocket.delegate = self;
+    self.websocket = webSocket;
+    [self.websocket open];
 
-//    BOOL flag = [self.pcmRecorder start];
-//    if (flag) {
-//        NSLog(@"startRecord result is %d",flag);
-//    }
-//    NSLog(@"--->websoket State %ld",(long)self.websocket.readyState);
-//    if (self.websocket.readyState != SR_OPEN) {
-//        self.websocket = nil;
-//        [self.websocket open];
-//    }
+    self.isStart = YES;
+    // 初始化语音识别
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"meta_vad_16k" ofType:@"jet"];
+    self.aIPIFlyRecor = [[AIPIFlyRecordHelper alloc] init:self config:[NSString stringWithFormat:@"vad_res=%@,aue=raw", path]];
+    [self.aIPIFlyRecor startRecord];
     
     _msgLabel.text = @"松开停止录音";
-  
+}
+
+- (void)stopRecordBtn:(UIButton *)btn {
+    [self.aIPIFlyRecor stopRecord];
+    [self.websocket close];
+    self.websocket = nil;
+    self.recordString = self.textView.text;
+    _msgLabel.text = @"按下开始录音";
+    [self requestMatching];
 }
 
 - (void)sendFileData
@@ -198,24 +237,6 @@
     }
 }
 
-- (void)stopRecordBtn:(UIButton *)btn {
-    
-    WeakSelf
-    [[FlyVoiceManager shareManager] stopSpeaking:^(NSString *str) {
-        NSLog(@"刚才说的是:%@",str);
-        weakSelf.textView.text = [weakSelf.textView.text stringByAppendingString:str];
-    }];
-//    [self.pcmRecorder stop];
-    sleep(2);
-    NSLog(@"抬起");
-    //[_manager endRecording];
-    _msgLabel.text = @"按下开始录音";
-    self.recordString = self.textView.text;
-    
-    [self requestMatching];
-
-}
-
 - (void)requestMatching {
     
     NSDictionary *param = @{@"voiceWords":self.quetionString,
@@ -226,11 +247,9 @@
     [XTMainViewModel getMatchingSuccess:param success:^(NSDictionary * _Nonnull result) {
         self->_matchingLabel.text = [NSString stringWithFormat:@"匹配度:%@",result[@"data"]];
         NSLog(@" 结果 %@",self->_matchingLabel.text);
-
     }];
     
 }
-
 
 - (void)clearRecordBtn {
     
@@ -255,11 +274,26 @@
 //
 //}
 
+#pragma mark --- lazy
+//-(SRWebSocket *)websocket{
+//    if (!_websocket) {
+//        // @"wss://aiskill.cpic.com.cn/websocket/voiceRecognize/online"
+//        // @"wss://aiskillsit.cpic.com.cn/websocket/voiceRecognize/online"
+//        _websocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:@"wss://aiskill.cpic.com.cn/websocket/voiceRecognize/online"]];
+//        _websocket.delegate = self;
+//    }
+//    return _websocket;
+//}
 
+-(VoiceRecognizeRequest *)request{
+    if (!_request) {
+        _request = [[VoiceRecognizeRequest alloc] initWith:@"9585b61fb61c4f9fb0129c7152b4d191" appId:@"e22cceb74ada4364b76313a44ed52049" reqNo:@"" rate:@"16k" audioStatus:@"1"];
+        _request.language = @"1";
+    }
+    return _request;
+}
 
 - (void)initUI {
-    
-    
     UIView *titleView = [[UIView alloc]init];
     [self addSubview:titleView];
     
@@ -303,11 +337,11 @@
     
     UIButton *recordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [recordBtn setImage:[UIImage imageNamed:@"voice"] forState:0];
-    [recordBtn addTarget:self action:@selector(clearRecordBtn) forControlEvents:UIControlEventTouchUpInside];
+    [recordBtn addTarget:self action:@selector(stopRecordBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:recordBtn];
     
     UILabel *reLabel = [UILabel new];
-    reLabel.text = @"重读";
+    reLabel.text = @"停止";
     reLabel.textColor = kMainColor;
     reLabel.font = kFont(10);
     reLabel.textAlignment = NSTextAlignmentCenter;

@@ -21,6 +21,5 @@
 #import "XTBaseViewController.h"
 #import "NSNumber+ToString.h"
 #import "MJRefresh.h"
-#import "Definition.h"
 #import "NSString+Tool.h"
 #endif /* Header_h */
