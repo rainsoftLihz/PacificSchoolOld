@@ -42,7 +42,11 @@
     manger.responseSerializer = [AFJSONResponseSerializer serializer];
     manger.requestSerializer.timeoutInterval = 30.f;
     manger.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/json",@"application/json",@"text/javascript",@"text/html",@"text/xml", nil];
-    //manger.securityPolicy = [self customSecurityPolicy];
+    
+    if (kAppIsPomesoft == 1 && kAppIsProduction ==1) {
+       manger.securityPolicy = [self customSecurityPolicy];
+    }
+
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     // 打印请求Api
     //[LTNetWorkManager jointParameter:[self getOldParamsFromParams:params] url:url];
@@ -74,7 +78,10 @@
     [LTNetWorkManager jointParameter:[self getOldParamsFromParams:params] url:url];
     
 
-    //manger.securityPolicy = [self customSecurityPolicy];
+    if (kAppIsPomesoft == 1 && kAppIsProduction ==1) {
+        manger.securityPolicy = [self customSecurityPolicy];
+    }
+
     
 
     [manger POST:url parameters:[self getOldParamsFromParams:params] progress:^(NSProgress * _Nonnull uploadProgress) {

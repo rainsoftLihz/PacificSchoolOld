@@ -60,7 +60,9 @@ WKNavigationDelegate>
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
         configuration.userContentController = userContentController;
         configuration.allowsInlineMediaPlayback = YES;
+        
         configuration.mediaTypesRequiringUserActionForPlayback = false;
+       
         configuration.preferences.minimumFontSize = 8.0;
         _wkWebView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];
         _wkWebView.backgroundColor = [UIColor blueColor];

@@ -255,35 +255,10 @@ AIPIFlyRecordDelegate
     
     self.textView.text = @"";
     self.recordString = @"";
-    self.matchingLabel.text = @"";
+    self.matchingLabel.text = @"匹配度:";
 }
 
-//- (void)onIFlyRecorderBuffer:(const void *)buffer bufferSize:(int)size {
-//    self.request.voiceData = [[[NSData alloc]initWithBytes:buffer length:size] base64EncodedStringWithOptions:0];
-//    NSData* data = self.request.mj_JSONData;
-//    NSString* dataStr = [[NSString alloc] initWithData:data
-//                                               encoding:NSUTF8StringEncoding];
-//    NSLog(@"dataStr==>>>%@",dataStr)
-//
-//    [self.websocket send:dataStr];
-
-//
-//}
-//
-//- (void)onIFlyRecorderError:(IFlyPcmRecorder *)recoder theError:(int)error {
-//
-//}
-
 #pragma mark --- lazy
-//-(SRWebSocket *)websocket{
-//    if (!_websocket) {
-//        // @"wss://aiskill.cpic.com.cn/websocket/voiceRecognize/online"
-//        // @"wss://aiskillsit.cpic.com.cn/websocket/voiceRecognize/online"
-//        _websocket = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:@"wss://aiskill.cpic.com.cn/websocket/voiceRecognize/online"]];
-//        _websocket.delegate = self;
-//    }
-//    return _websocket;
-//}
 
 -(VoiceRecognizeRequest *)request{
     if (!_request) {
@@ -337,11 +312,11 @@ AIPIFlyRecordDelegate
     
     UIButton *recordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [recordBtn setImage:[UIImage imageNamed:@"voice"] forState:0];
-    [recordBtn addTarget:self action:@selector(stopRecordBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [recordBtn addTarget:self action:@selector(clearRecordBtn) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:recordBtn];
     
     UILabel *reLabel = [UILabel new];
-    reLabel.text = @"停止";
+    reLabel.text = @"重读";
     reLabel.textColor = kMainColor;
     reLabel.font = kFont(10);
     reLabel.textAlignment = NSTextAlignmentCenter;

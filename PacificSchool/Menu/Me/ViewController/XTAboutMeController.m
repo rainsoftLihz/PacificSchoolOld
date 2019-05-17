@@ -72,9 +72,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        //对应name --- version
-        NSString *currentVersion = [[[NSBundle mainBundle]infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-        [self showStatus:[NSString stringWithFormat:@"当前版本号为：%@",currentVersion]];
+        //对应name --- version  跟安卓同步
+        //NSString *currentVersion = [[[NSBundle mainBundle]infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        [self showStatus:[NSString stringWithFormat:@"当前版本号为：%@",@"1.7.1"]];
         
     }else if (indexPath.row == 1){
         XTQRcodeVController* vc = [XTQRcodeVController new];

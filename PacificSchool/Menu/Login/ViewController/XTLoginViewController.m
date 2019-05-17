@@ -32,6 +32,11 @@
 
 - (void)initData {
     NSString* userName = DEF_PERSISTENT_GET_OBJECT(kUserName);
+    
+    if ([userName isEqualToString:@"lihouzhan"]) {
+        userName = @"";
+    }
+    
     if (userName && userName.length > 0) {
         self.accountTF.text = userName;
     }

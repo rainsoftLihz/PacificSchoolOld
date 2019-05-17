@@ -212,12 +212,13 @@
     footView.frame = CGRectMake(0, 0, kScreenW, 150);
     [footView.sceneBtn addTarget:self action:@selector(gotoScene) forControlEvents:UIControlEventTouchUpInside];
     [footView.dayCourseBtn addTarget:self action:@selector(gotoDayCource) forControlEvents:UIControlEventTouchUpInside];
+    [footView.dayCourseBtn setTitle:@"每日一课" forState:UIControlStateNormal];
     return footView;
 }
 
 -(void)gotoDayCource{
-    XTWebViewController* vc = [XTWebViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+//    XTWebViewController* vc = [XTWebViewController new];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

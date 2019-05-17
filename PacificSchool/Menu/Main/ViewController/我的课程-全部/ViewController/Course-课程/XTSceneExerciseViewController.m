@@ -54,12 +54,6 @@
     self.wkWebView.navigationDelegate = self;
     self.wkWebView.UIDelegate = self;
 
-    [self.view addSubview:self.wkWebView];
-    [self.wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.bottom.equalTo(self.view);
-    }];
-    
-    
     if (self.webType == XTWebTestType) {
         self.title = @"情景演练";
         
@@ -86,6 +80,12 @@
 
     }
     
+    
+    [self.view addSubview:self.wkWebView];
+    
+    [self.wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.bottom.equalTo(self.view);
+    }];
 }
 
 - (void)clickedStartButtonHandler {
@@ -127,12 +127,13 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
     /** 此方法是向JS代码传参数 */
+    WeakSelf;
     NSString * jsStr = [NSString stringWithFormat:@"getRecordOptionsIOS('%@')",@"OC调用JS"];
     [self.wkWebView evaluateJavaScript:jsStr completionHandler:^(id _Nullable result, NSError * _Nullable error) {
         NSLog(@"拿到录音参数参数%@----%@",result, error);
-        self->_bitsPerChannel = [result[@"bitsPerChannel"] intValue];
-        self->_bytesPerPacket = [result[@"bytesPerPacket"] intValue];
-        self->_sampleRateKey = [result[@"sampleRateKey"] intValue];
+        weakSelf.bitsPerChannel = [result[@"bitsPerChannel"] intValue];
+        weakSelf.bytesPerPacket = [result[@"bytesPerPacket"] intValue];
+        weakSelf.sampleRateKey = [result[@"sampleRateKey"] intValue];
         
     }];
 }
@@ -148,18 +149,51 @@
     NSLog(@"message ==== %@ boby===%@",message.name,message.body);
     if ([message.body isEqualToString:@"StartRecord"]) {
         [self clickedStartButtonHandler];
-        
     }else if ([message.body isEqualToString:@"EndRecord"]){
         [self clickedEndButtonHandler];
-        
     }else if ([message.name isEqualToString:@"endExam"]){
-        
         NSLog(@"结束考试");
         [self endExam:message.body];
-        
+    }else if ([message.body containsString:@"errCode"]){
+        NSLog(@"排队机制====%@",message.body);
+        [self queuingAction:message.body];
     }
 }
 
+#pragma mark --- 排队
+-(void)queuingAction:(NSString*) code{
+    
+    NSString* messae = ![code containsString:@"4004"]?@"当前网络质量不佳，请稍后再试！":@"当前人数较多，请稍后再试";
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示！" message:messae preferredStyle:UIAlertControllerStyleAlert];
+    
+    WeakSelf;
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+       
+        [weakSelf doAction];
+        
+    }];
+    
+    [alertController addAction:confirmAction];
+    [self.navigationController presentViewController:alertController animated:YES completion:nil];
+}
+
+-(void)doAction{
+    if (self.webType == XTWebTestType) {
+        //情景演练
+        NSString * jsStr = @"onGetUserAction('OK')";
+        [self.wkWebView evaluateJavaScript:jsStr completionHandler:^(id _Nullable result, NSError * _Nullable error) {
+        }];
+        
+//        if (self.wkWebView.canGoBack) {
+//
+//            [self.wkWebView goBack];
+//
+//        }
+    }else {
+        //通关考
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 
 - (WKWebView *)wkWebView {
@@ -176,7 +210,6 @@
         configuration.mediaTypesRequiringUserActionForPlayback = false;
         
         _wkWebView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:configuration];
-        //_wkWebView.backgroundColor = [UIColor blueColor];
     }
     return _wkWebView;
 }
@@ -187,7 +220,10 @@
     [super viewWillDisappear:animated];
     
     [UIApplication sharedApplication].idleTimerDisabled = NO;
-
+    [self.wkWebView.configuration.userContentController removeScriptMessageHandlerForName:@"start"];
+    
+    [self.wkWebView.configuration.userContentController removeScriptMessageHandlerForName:@"end"];
+    [self.wkWebView.configuration.userContentController removeScriptMessageHandlerForName:@"endExam"];
     [self clickedEndButtonHandler];
     self.capture = nil;
     _wkWebView = nil;
@@ -203,7 +239,7 @@
 }
 
 -(void)dealloc{
-    NSLog(@"======dealloc========");
+    NSLog(@"dealloc===>%@",self);
 }
 
 @end

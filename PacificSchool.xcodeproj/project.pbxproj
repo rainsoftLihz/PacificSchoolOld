@@ -179,9 +179,6 @@
 		FBC389A0223DF1C1005058E3 /* XTHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC3899F223DF1C1005058E3 /* XTHistoryModel.m */; };
 		FBC389A4223E11CE005058E3 /* XTExamResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBC389A2223E11CE005058E3 /* XTExamResultViewController.m */; };
 		FBC389A5223E11CE005058E3 /* XTExamResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBC389A3223E11CE005058E3 /* XTExamResultViewController.xib */; };
-		FBCCCB782244C9E7009CD83B /* EncryptUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCCCB702244C9E6009CD83B /* EncryptUtil.m */; };
-		FBCCCB7A2244C9E7009CD83B /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCCCB752244C9E6009CD83B /* GTMBase64.m */; };
-		FBCCCB7B2244C9E7009CD83B /* EncryptUtil.java in Sources */ = {isa = PBXBuildFile; fileRef = FBCCCB772244C9E6009CD83B /* EncryptUtil.java */; };
 		FBCCCB7E2244D1B8009CD83B /* XTDesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FBCCCB7D2244D1B8009CD83B /* XTDesModel.m */; };
 		FBD0094E222D7AF40025C5E5 /* XTRankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBD0094C222D7AF40025C5E5 /* XTRankViewController.m */; };
 		FBD0094F222D7AF40025C5E5 /* XTRankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBD0094D222D7AF40025C5E5 /* XTRankViewController.xib */; };
@@ -495,12 +492,6 @@
 		FBC389A1223E11CE005058E3 /* XTExamResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTExamResultViewController.h; sourceTree = "<group>"; };
 		FBC389A2223E11CE005058E3 /* XTExamResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTExamResultViewController.m; sourceTree = "<group>"; };
 		FBC389A3223E11CE005058E3 /* XTExamResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XTExamResultViewController.xib; sourceTree = "<group>"; };
-		FBCCCB702244C9E6009CD83B /* EncryptUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptUtil.m; sourceTree = "<group>"; };
-		FBCCCB722244C9E6009CD83B /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
-		FBCCCB732244C9E6009CD83B /* EncryptUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptUtil.h; sourceTree = "<group>"; };
-		FBCCCB742244C9E6009CD83B /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		FBCCCB752244C9E6009CD83B /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
-		FBCCCB772244C9E6009CD83B /* EncryptUtil.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = EncryptUtil.java; sourceTree = "<group>"; };
 		FBCCCB7C2244D1B8009CD83B /* XTDesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTDesModel.h; sourceTree = "<group>"; };
 		FBCCCB7D2244D1B8009CD83B /* XTDesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTDesModel.m; sourceTree = "<group>"; };
 		FBD0094B222D7AF40025C5E5 /* XTRankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTRankViewController.h; sourceTree = "<group>"; };
@@ -1094,7 +1085,6 @@
 			children = (
 				530606E9227FE7C9001AFB99 /* TBSocketVoice */,
 				FB2392BE22490E99001ADD22 /* SVProgressHUD */,
-				FBCCCB6F2244C9E6009CD83B /* EncryptUtil */,
 				FB175275223AAFD9000EC109 /* lib */,
 				FB9CACB82234CB6D0070E8D6 /* ZFPlayer */,
 				FB3D6A46222EBFEA00C8D2AD /* Tools */,
@@ -1330,19 +1320,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		FBCCCB6F2244C9E6009CD83B /* EncryptUtil */ = {
-			isa = PBXGroup;
-			children = (
-				FBCCCB732244C9E6009CD83B /* EncryptUtil.h */,
-				FBCCCB702244C9E6009CD83B /* EncryptUtil.m */,
-				FBCCCB742244C9E6009CD83B /* GTMDefines.h */,
-				FBCCCB722244C9E6009CD83B /* GTMBase64.h */,
-				FBCCCB752244C9E6009CD83B /* GTMBase64.m */,
-				FBCCCB772244C9E6009CD83B /* EncryptUtil.java */,
-			);
-			path = EncryptUtil;
-			sourceTree = "<group>";
-		};
 		FBDD56A22233918F008442B1 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1563,7 +1540,6 @@
 				539013722264733600073F3B /* NSNumber+ToString.m in Sources */,
 				FB9CAD362234F6380070E8D6 /* XTTitleView.m in Sources */,
 				FB9CACF32234D8690070E8D6 /* MusicPlayerView.m in Sources */,
-				FBCCCB782244C9E7009CD83B /* EncryptUtil.m in Sources */,
 				FB9CACD82234CB6D0070E8D6 /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				FB9CAD242234F2180070E8D6 /* XTExamViewController.m in Sources */,
 				FB18A33E2232BF72001496CB /* UIView+Gradient.m in Sources */,
@@ -1621,7 +1597,6 @@
 				FBDD56BB2233A9A9008442B1 /* XTCoursewareDetailModel.m in Sources */,
 				5329C10F2265D4F300EC8ABE /* XTPingfenView.m in Sources */,
 				FB9CACE32234CB6D0070E8D6 /* MMMaterialDesignSpinner.m in Sources */,
-				FBCCCB7B2244C9E7009CD83B /* EncryptUtil.java in Sources */,
 				FBE16BDD2236A723009D6B81 /* LQRadarChart.m in Sources */,
 				FB88B9D12222DD86005AAA4E /* XTBaseNavViewController.m in Sources */,
 				FB3D6B772237F1560096B2AC /* XTSwitchView.m in Sources */,
@@ -1648,7 +1623,6 @@
 				FBC3899C223DED8D005058E3 /* XTHistoryTableViewCell.m in Sources */,
 				FBD0094E222D7AF40025C5E5 /* XTRankViewController.m in Sources */,
 				FB00B51022329A950052359E /* XTElnMapJobListModel.m in Sources */,
-				FBCCCB7A2244C9E7009CD83B /* GTMBase64.m in Sources */,
 				FBE30C4C223024BD0085B94C /* XTOrganizationTableViewCell.m in Sources */,
 				FB2392C922490E99001ADD22 /* SVRadialGradientLayer.m in Sources */,
 				FB19B7A3223959F300B73D56 /* XTSceneExerciseViewController.m in Sources */,
@@ -1764,7 +1738,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = PacificSchool/PrefixHeader.pch;
 				INFOPLIST_FILE = PacificSchool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
